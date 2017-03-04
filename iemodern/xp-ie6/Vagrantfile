@@ -1,0 +1,10 @@
+Vagrant.configure("2") do |config|
+	config.vm.box = 'XPIE6'
+	config.vm.box_url = "http://aka.ms/vagrant-xp-ie6"
+	config.vm.guest = :windows
+	config.vm.boot_timeout = 1
+	config.vm.communicator = "winrm"
+	config.vm.provider "virtualbox" do |vm|
+	      vm.gui = true
+	end
+end
