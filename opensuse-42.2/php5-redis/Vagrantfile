@@ -85,13 +85,6 @@ Vagrant.configure(2) do |config|
     puppet.options = "--verbose --debug"
     puppet.facter = {
       "vagrant" => "1",
-      # We must have this. Facter have bug in
-      # /usr/lib64/ruby/gems/2.1.0/gems/facter-2.4.6lib/facter/operatingsystem/linux.rb
-      # at line 70. We have "openSUSE" as operating system, but facter require one of:
-      # "SLES", "SLED" or "OpenSuSE"
-      # Finally facter operatingsystemrelease return kernel version
-      # instead of operating system release
-      "operatingsystemrelease" => "13.2"
     }
   end
 
