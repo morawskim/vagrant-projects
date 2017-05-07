@@ -1,8 +1,8 @@
-Machine to build php53m-gearman
+Machine to build php53v-gearman
 ========
 
 
 Usage
 -------
 `vagrant up`
-`vagrant ssh -- -l rpm -i ~/.ssh/id_rsa /vagrant/build-spec.sh /home/rpm/rpmbuild php53m-gearman.spec`
+`vagrant ssh -- -l rpm -i ~/.ssh/id_rsa /vagrant/build-spec.sh /home/rpm/rpmbuild php53v-gearman.spec`

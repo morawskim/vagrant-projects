@@ -1,8 +1,8 @@
-Machine to build php53m-xdebug
+Machine to build php53v-xdebug
 ========
 
 
 Usage
 -------
 `vagrant up`
-`vagrant ssh -- -l rpm -i ~/.ssh/id_rsa /vagrant/build-spec.sh /home/rpm/rpmbuild php53m-xdebug.spec`
+`vagrant ssh -- -l rpm -i ~/.ssh/id_rsa /vagrant/build-spec.sh /home/rpm/rpmbuild php53v-xdebug.spec`
