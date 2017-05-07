@@ -1,8 +1,8 @@
-Machine to build php7-mailparse
+Machine to build php70v-mailparse
 ========
 
 
 Usage
 -------
 `vagrant up`
-`vagrant ssh -- -l rpm -i ~/.ssh/id_rsa /vagrant/build-spec.sh /home/rpm/rpmbuild php7-mailparse.spec`
+`vagrant ssh -- -l rpm -i ~/.ssh/id_rsa /vagrant/build-spec.sh /home/rpm/rpmbuild php70v-mailparse.spec`
