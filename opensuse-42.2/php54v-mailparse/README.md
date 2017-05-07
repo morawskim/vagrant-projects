@@ -1,8 +1,8 @@
-Machine to build php54-mailparse
+Machine to build php54v-mailparse
 ========
 
 
 Usage
 -------
 `vagrant up`
-`vagrant ssh -- -l rpm -i ~/.ssh/id_rsa /vagrant/build-spec.sh /home/rpm/rpmbuild php54-mailparse.spec`
+`vagrant ssh -- -l rpm -i ~/.ssh/id_rsa /vagrant/build-spec.sh /home/rpm/rpmbuild php54v-mailparse.spec`

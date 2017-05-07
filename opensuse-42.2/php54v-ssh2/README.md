@@ -1,8 +1,8 @@
-Machine to build php54-ssh2
+Machine to build php54v-ssh2
 ========
 
 
 Usage
 -------
 `vagrant up`
-`vagrant ssh -- -l rpm -i ~/.ssh/id_rsa /vagrant/build-spec.sh /home/rpm/rpmbuild php54-ssh2.spec`
+`vagrant ssh -- -l rpm -i ~/.ssh/id_rsa /vagrant/build-spec.sh /home/rpm/rpmbuild php54v-ssh2.spec`
