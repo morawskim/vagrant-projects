@@ -4,4 +4,4 @@ Machine to build balance
 Usage
 -------
 `vagrant up`
-`vagrant ssh -- -l rpm -i ~/.ssh/id_rsa /vagrant/build-spec.sh /home/rpm/rpmbuild balance.spec`
+`vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild balance.spec`
