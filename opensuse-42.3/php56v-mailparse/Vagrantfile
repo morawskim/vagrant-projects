@@ -76,6 +76,14 @@ Vagrant.configure(2) do |config|
   # SHELL
 
   #config.vm.provision "shell", path: "provision.sh", privileged: false
+  # At present, opensuse does not install puppet by default. We need to do this manually.
+  # See commit message of https://github.com/openSUSE/vagrant/commit/a7b18b9fa96a540e54abf3e629c81c92d4ec6dc9
+  config.vm.provision :shell, :inline => <<-EOS
+    rpm --import http://download.opensuse.org/repositories/systemsmanagement:/puppet/openSUSE_Leap_42.3/repodata/repomd.xml.key
+    zypper addrepo -n 'Systemsmanagement Puppet' http://download.opensuse.org/repositories/systemsmanagement:/puppet/openSUSE_Leap_42.3/ systemsmanagement-puppet
+
+    zypper --non-interactive --gpg-auto-import-keys in --auto-agree-with-licenses puppet
+  EOS
   config.vm.provision "puppet" do |puppet|
     puppet.manifests_path = File.expand_path('../../puppet/manifests/rpm')
     puppet.manifest_file = "php56v-mailparse.pp"
