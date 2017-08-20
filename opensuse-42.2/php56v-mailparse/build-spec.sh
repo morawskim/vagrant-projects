@@ -19,7 +19,5 @@ popd
 pushd SPECS
 rpmbuild -ba $SPECFILE
 popd
-
-
-
-
+cp -vr RPMS /srv/rpmbuild
+cp -vr SRPMS /srv/rpmbuild
