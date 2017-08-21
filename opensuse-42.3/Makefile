@@ -1,10 +1,14 @@
-.ONESHELL:
-not_exist:
+HTTP_SERVER_PORT ?= 8080
+HTTP_SERVER_ADDRESS ?= 127.0.0.1
 
+.ONESHELL:
 clean:
 	@git clean -fdx
 
-adobe-source-code-pro-fonts: not_exist
+run-http-server:
+	(http-server -p $(HTTP_SERVER_PORT) -a $(HTTP_SERVER_ADDRESS) $(HTTP_SERVER_DOCUMENT_ROOT) &)
+
+adobe-source-code-pro-fonts: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -13,7 +17,7 @@ adobe-source-code-pro-fonts: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-balance: not_exist
+balance: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -22,7 +26,7 @@ balance: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-bash-snippets: not_exist
+bash-snippets: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -31,7 +35,7 @@ bash-snippets: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-bcal: not_exist
+bcal: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -40,7 +44,7 @@ bcal: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-bfs: not_exist
+bfs: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -58,7 +62,7 @@ box2: composer
 	@vagrant destroy --force
 	@cd ..
 
-bup: not_exist
+bup: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -67,7 +71,7 @@ bup: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-cgit-filter-syntaxhiglight: not_exist
+cgit-filter-syntaxhiglight: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -76,7 +80,7 @@ cgit-filter-syntaxhiglight: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-cheat: not_exist
+cheat: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -85,7 +89,7 @@ cheat: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-completion-ruby: not_exist
+completion-ruby: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -94,7 +98,7 @@ completion-ruby: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-composer: not_exist
+composer: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -103,7 +107,7 @@ composer: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-ctop: not_exist
+ctop: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -112,7 +116,7 @@ ctop: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-dockerize: not_exist
+dockerize: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -121,7 +125,7 @@ dockerize: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-easy-rsa: not_exist
+easy-rsa: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -130,7 +134,7 @@ easy-rsa: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-easy-rsa2: not_exist
+easy-rsa2: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -139,7 +143,7 @@ easy-rsa2: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-enhancd: not_exist
+enhancd: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -148,7 +152,7 @@ enhancd: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-extract-x509-cert: not_exist
+extract-x509-cert: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -157,7 +161,7 @@ extract-x509-cert: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-fakeprovide: not_exist
+fakeprovide: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -166,7 +170,7 @@ fakeprovide: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-fakeprovide-libappindicator: not_exist
+fakeprovide-libappindicator: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -175,7 +179,7 @@ fakeprovide-libappindicator: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-fakeprovide-libXScrnSaver: not_exist
+fakeprovide-libXScrnSaver: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -184,7 +188,7 @@ fakeprovide-libXScrnSaver: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-fakeprovide-openssl-devel: not_exist
+fakeprovide-openssl-devel: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -193,7 +197,7 @@ fakeprovide-openssl-devel: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-faker-cli: not_exist
+faker-cli: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -202,7 +206,7 @@ faker-cli: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-fontawesome-fonts: not_exist
+fontawesome-fonts: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -211,7 +215,7 @@ fontawesome-fonts: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-fzf: not_exist
+fzf: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -220,7 +224,7 @@ fzf: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-git-extras: not_exist
+git-extras: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -229,7 +233,7 @@ git-extras: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-greenmail: not_exist
+greenmail: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -238,7 +242,7 @@ greenmail: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-hstr: not_exist
+hstr: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -247,7 +251,7 @@ hstr: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-http-prompt: not_exist
+http-prompt: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -256,7 +260,7 @@ http-prompt: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-icdiff: not_exist
+icdiff: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -265,7 +269,7 @@ icdiff: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-jetbrains-download-scripts: not_exist
+jetbrains-download-scripts: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -274,7 +278,7 @@ jetbrains-download-scripts: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-jetbrains-toolbox: not_exist
+jetbrains-toolbox: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -283,7 +287,7 @@ jetbrains-toolbox: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-jmeter: not_exist
+jmeter: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -292,7 +296,7 @@ jmeter: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-json-tools: not_exist
+json-tools: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -301,7 +305,7 @@ json-tools: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-krunner-kopetecontacts: not_exist
+krunner-kopetecontacts: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -310,7 +314,7 @@ krunner-kopetecontacts: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-libpuzzle: not_exist
+libpuzzle: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -319,7 +323,7 @@ libpuzzle: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-mailhog: not_exist
+mailhog: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -328,7 +332,7 @@ mailhog: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-mkosi: not_exist
+mkosi: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -337,7 +341,7 @@ mkosi: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-monoid: not_exist
+monoid: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -346,7 +350,7 @@ monoid: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-mphp-switcher: not_exist
+mphp-switcher: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -355,7 +359,7 @@ mphp-switcher: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-mycli: not_exist
+mycli: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -364,7 +368,7 @@ mycli: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-nerd-fonts: not_exist
+nerd-fonts: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -373,7 +377,7 @@ nerd-fonts: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-ngrok-client: not_exist
+ngrok-client: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -382,7 +386,7 @@ ngrok-client: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-O-Saft: not_exist
+O-Saft: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -391,7 +395,7 @@ O-Saft: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-owasp-zap: not_exist
+owasp-zap: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -400,7 +404,7 @@ owasp-zap: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-packer: not_exist
+packer: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -409,7 +413,7 @@ packer: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-par2: not_exist
+par2: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -418,7 +422,7 @@ par2: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-password-store-import: not_exist
+password-store-import: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -427,7 +431,7 @@ password-store-import: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-perl-MIME-Types: not_exist
+perl-MIME-Types: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -454,7 +458,7 @@ phinx: composer
 	@vagrant destroy --force
 	@cd ..
 
-php: not_exist
+php: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -463,7 +467,7 @@ php: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-php53v: not_exist
+php53v: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -517,7 +521,7 @@ php53v-xdebug: php53v
 	@vagrant destroy --force
 	@cd ..
 
-php54v: not_exist
+php54v: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -571,7 +575,7 @@ php54v-xdebug: php54v
 	@vagrant destroy --force
 	@cd ..
 
-php55v: not_exist
+php55v: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -634,7 +638,7 @@ php55v-xdebug: php55v
 	@vagrant destroy --force
 	@cd ..
 
-php56v: not_exist
+php56v: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -697,7 +701,7 @@ php56v-xdebug: php56v
 	@vagrant destroy --force
 	@cd ..
 
-php5-redis: not_exist
+php5-redis: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -706,7 +710,7 @@ php5-redis: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-php70v: not_exist
+php70v: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -760,7 +764,7 @@ php70v-xdebug: php70v
 	@vagrant destroy --force
 	@cd ..
 
-php71v: not_exist
+php71v: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -814,7 +818,7 @@ php71v-xdebug: php71v
 	@vagrant destroy --force
 	@cd ..
 
-php-build: not_exist
+php-build: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -841,7 +845,7 @@ PHPCompatibility: composer
 	@vagrant destroy --force
 	@cd ..
 
-php-development-scripts: not_exist
+php-development-scripts: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -850,7 +854,7 @@ php-development-scripts: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-phpldapadmin: not_exist
+phpldapadmin: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -859,7 +863,7 @@ phpldapadmin: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-phpMyAdmin40: not_exist
+phpMyAdmin40: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -868,7 +872,7 @@ phpMyAdmin40: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-phpmyadmin-curl-export: not_exist
+phpmyadmin-curl-export: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -877,7 +881,7 @@ phpmyadmin-curl-export: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-plantuml: not_exist
+plantuml: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -886,7 +890,7 @@ plantuml: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-postman: not_exist
+postman: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -895,7 +899,7 @@ postman: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-python-dpath: not_exist
+python-dpath: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -904,7 +908,7 @@ python-dpath: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-python-mitmproxy: not_exist
+python-mitmproxy: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -913,7 +917,7 @@ python-mitmproxy: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-python-mitmproxy-bundled: not_exist
+python-mitmproxy-bundled: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -922,7 +926,7 @@ python-mitmproxy-bundled: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-python-parsimonious: not_exist
+python-parsimonious: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -931,7 +935,7 @@ python-parsimonious: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-python-prompt_toolkit: not_exist
+python-prompt_toolkit: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -940,7 +944,7 @@ python-prompt_toolkit: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-python-sphinxcontrib-documentedlist: not_exist
+python-sphinxcontrib-documentedlist: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -949,7 +953,7 @@ python-sphinxcontrib-documentedlist: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-rr: not_exist
+rr: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -958,7 +962,7 @@ rr: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-ruby-build: not_exist
+ruby-build: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -967,7 +971,7 @@ ruby-build: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-selenium: not_exist
+selenium: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -976,7 +980,7 @@ selenium: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-selenium-chromedriver: not_exist
+selenium-chromedriver: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -985,7 +989,7 @@ selenium-chromedriver: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-skipfish: not_exist
+skipfish: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -994,7 +998,7 @@ skipfish: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-smtp-cli: not_exist
+smtp-cli: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1003,7 +1007,7 @@ smtp-cli: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-snowbox: not_exist
+snowbox: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1012,7 +1016,7 @@ snowbox: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-SoapUI: not_exist
+SoapUI: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1021,7 +1025,7 @@ SoapUI: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-sslscan: not_exist
+sslscan: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1030,7 +1034,7 @@ sslscan: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-susepaste-qt: not_exist
+susepaste-qt: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1039,7 +1043,7 @@ susepaste-qt: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-swaks: not_exist
+swaks: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1048,7 +1052,7 @@ swaks: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-telegram-desktop: not_exist
+telegram-desktop: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1057,7 +1061,7 @@ telegram-desktop: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-termshare: not_exist
+termshare: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1066,7 +1070,7 @@ termshare: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-toxiproxy: not_exist
+toxiproxy: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1075,7 +1079,7 @@ toxiproxy: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-traefik: not_exist
+traefik: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1084,7 +1088,7 @@ traefik: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-translate-shell: not_exist
+translate-shell: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1093,7 +1097,7 @@ translate-shell: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-undocker: not_exist
+undocker: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1102,7 +1106,7 @@ undocker: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-xdebug-tmpfiles: not_exist
+xdebug-tmpfiles: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1111,7 +1115,7 @@ xdebug-tmpfiles: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-xrectsel: not_exist
+xrectsel: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1120,7 +1124,7 @@ xrectsel: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-yadm: not_exist
+yadm: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1129,7 +1133,7 @@ yadm: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-yum-scripts: not_exist
+yum-scripts: run-http-server
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1138,7 +1142,7 @@ yum-scripts: not_exist
 	@vagrant destroy --force
 	@cd ..
 
-all: adobe-source-code-pro-fonts, balance, bash-snippets, bcal, bfs, box2, bup, cgit-filter-syntaxhiglight, cheat, completion-ruby, composer, ctop, dockerize, easy-rsa, easy-rsa2, enhancd, extract-x509-cert, fakeprovide, fakeprovide-libappindicator, fakeprovide-libXScrnSaver, fakeprovide-openssl-devel, faker-cli, fontawesome-fonts, fzf, git-extras, greenmail, hstr, http-prompt, icdiff, jetbrains-download-scripts, jetbrains-toolbox, jmeter, json-tools, krunner-kopetecontacts, libpuzzle, mailhog, mkosi, monoid, mphp-switcher, mycli, nerd-fonts, ngrok-client, O-Saft, owasp-zap, packer, par2, password-store-import, perl-MIME-Types, phing, phinx, php, php53v, php53v-gearman, php53v-imagick, php53v-mailparse, php53v-ssh2, php53v-xdebug, php54v, php54v-gearman, php54v-imagick, php54v-mailparse, php54v-ssh2, php54v-xdebug, php55v, php55v-gearman, php55v-imagick, php55v-mailparse, php55v-redis, php55v-ssh2, php55v-xdebug, php56v, php56v-gearman, php56v-imagick, php56v-mailparse, php56v-redis, php56v-ssh2, php56v-xdebug, php5-redis, php70v, php70v-gearman, php70v-imagick, php70v-mailparse, php70v-redis, php70v-xdebug, php71v, php71v-gearman, php71v-imagick, php71v-mailparse, php71v-redis, php71v-xdebug, php-build, PHP_CodeSniffer, PHPCompatibility, php-development-scripts, phpldapadmin, phpMyAdmin40, phpmyadmin-curl-export, plantuml, postman, python-dpath, python-mitmproxy, python-mitmproxy-bundled, python-parsimonious, python-prompt_toolkit, python-sphinxcontrib-documentedlist, rr, ruby-build, selenium, selenium-chromedriver, skipfish, smtp-cli, snowbox, SoapUI, sslscan, susepaste-qt, swaks, telegram-desktop, termshare, toxiproxy, traefik, translate-shell, undocker, xdebug-tmpfiles, xrectsel, yadm, yum-scripts
+all: adobe-source-code-pro-fonts balance bash-snippets bcal bfs box2 bup cgit-filter-syntaxhiglight cheat completion-ruby composer ctop dockerize easy-rsa easy-rsa2 enhancd extract-x509-cert fakeprovide fakeprovide-libappindicator fakeprovide-libXScrnSaver fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf git-extras greenmail hstr http-prompt icdiff jetbrains-download-scripts jetbrains-toolbox jmeter json-tools krunner-kopetecontacts libpuzzle mailhog mkosi monoid mphp-switcher mycli nerd-fonts ngrok-client O-Saft owasp-zap packer par2 password-store-import perl-MIME-Types phing phinx php php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 php53v-xdebug php54v php54v-gearman php54v-imagick php54v-mailparse php54v-ssh2 php54v-xdebug php55v php55v-gearman php55v-imagick php55v-mailparse php55v-redis php55v-ssh2 php55v-xdebug php56v php56v-gearman php56v-imagick php56v-mailparse php56v-redis php56v-ssh2 php56v-xdebug php5-redis php70v php70v-gearman php70v-imagick php70v-mailparse php70v-redis php70v-xdebug php71v php71v-gearman php71v-imagick php71v-mailparse php71v-redis php71v-xdebug php-build PHP_CodeSniffer PHPCompatibility php-development-scripts phpldapadmin phpMyAdmin40 phpmyadmin-curl-export plantuml postman python-dpath python-mitmproxy python-mitmproxy-bundled python-parsimonious python-prompt_toolkit python-sphinxcontrib-documentedlist rr ruby-build selenium selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan susepaste-qt swaks telegram-desktop termshare toxiproxy traefik translate-shell undocker xdebug-tmpfiles xrectsel yadm yum-scripts
 	echo "Start build ALL packages"
 
-.PHONY: all clean adobe-source-code-pro-fonts balance bash-snippets bcal bfs box2 bup cgit-filter-syntaxhiglight cheat completion-ruby composer ctop dockerize easy-rsa easy-rsa2 enhancd extract-x509-cert fakeprovide fakeprovide-libappindicator fakeprovide-libXScrnSaver fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf git-extras greenmail hstr http-prompt icdiff jetbrains-download-scripts jetbrains-toolbox jmeter json-tools krunner-kopetecontacts libpuzzle mailhog mkosi monoid mphp-switcher mycli nerd-fonts ngrok-client O-Saft owasp-zap packer par2 password-store-import perl-MIME-Types phing phinx php php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 php53v-xdebug php54v php54v-gearman php54v-imagick php54v-mailparse php54v-ssh2 php54v-xdebug php55v php55v-gearman php55v-imagick php55v-mailparse php55v-redis php55v-ssh2 php55v-xdebug php56v php56v-gearman php56v-imagick php56v-mailparse php56v-redis php56v-ssh2 php56v-xdebug php5-redis php70v php70v-gearman php70v-imagick php70v-mailparse php70v-redis php70v-xdebug php71v php71v-gearman php71v-imagick php71v-mailparse php71v-redis php71v-xdebug php-build PHP_CodeSniffer PHPCompatibility php-development-scripts phpldapadmin phpMyAdmin40 phpmyadmin-curl-export plantuml postman python-dpath python-mitmproxy python-mitmproxy-bundled python-parsimonious python-prompt_toolkit python-sphinxcontrib-documentedlist rr ruby-build selenium selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan susepaste-qt swaks telegram-desktop termshare toxiproxy traefik translate-shell undocker xdebug-tmpfiles xrectsel yadm yum-scripts
+.PHONY: all clean run-http-server adobe-source-code-pro-fonts balance bash-snippets bcal bfs box2 bup cgit-filter-syntaxhiglight cheat completion-ruby composer ctop dockerize easy-rsa easy-rsa2 enhancd extract-x509-cert fakeprovide fakeprovide-libappindicator fakeprovide-libXScrnSaver fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf git-extras greenmail hstr http-prompt icdiff jetbrains-download-scripts jetbrains-toolbox jmeter json-tools krunner-kopetecontacts libpuzzle mailhog mkosi monoid mphp-switcher mycli nerd-fonts ngrok-client O-Saft owasp-zap packer par2 password-store-import perl-MIME-Types phing phinx php php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 php53v-xdebug php54v php54v-gearman php54v-imagick php54v-mailparse php54v-ssh2 php54v-xdebug php55v php55v-gearman php55v-imagick php55v-mailparse php55v-redis php55v-ssh2 php55v-xdebug php56v php56v-gearman php56v-imagick php56v-mailparse php56v-redis php56v-ssh2 php56v-xdebug php5-redis php70v php70v-gearman php70v-imagick php70v-mailparse php70v-redis php70v-xdebug php71v php71v-gearman php71v-imagick php71v-mailparse php71v-redis php71v-xdebug php-build PHP_CodeSniffer PHPCompatibility php-development-scripts phpldapadmin phpMyAdmin40 phpmyadmin-curl-export plantuml postman python-dpath python-mitmproxy python-mitmproxy-bundled python-parsimonious python-prompt_toolkit python-sphinxcontrib-documentedlist rr ruby-build selenium selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan susepaste-qt swaks telegram-desktop termshare toxiproxy traefik translate-shell undocker xdebug-tmpfiles xrectsel yadm yum-scripts
