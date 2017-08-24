@@ -7,7 +7,7 @@ clean:
 	@git clean -fdx
 
 run-http-server:
-	(http-server -p $(HTTP_SERVER_PORT) -a $(HTTP_SERVER_ADDRESS) $(HTTP_SERVER_DOCUMENT_ROOT) &)
+	http-server -p $(HTTP_SERVER_PORT) -a $(HTTP_SERVER_ADDRESS) $(HTTP_SERVER_DOCUMENT_ROOT) &
 
 adobe-source-code-pro-fonts: run-http-server
 	@echo Start build $@
