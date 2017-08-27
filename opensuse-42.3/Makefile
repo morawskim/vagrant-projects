@@ -1,15 +1,12 @@
 HTTP_SERVER_PORT ?= 8080
 HTTP_SERVER_ADDRESS ?= 127.0.0.1
-HTTP_SERVER_DOCUMENT_ROOT ?= ~/rpmbuild
+HTTP_SERVER_DOCUMENT_ROOT ?= /home/marcin/Dokumenty/repo/openSUSE-42.3/
 
 .ONESHELL:
 clean:
 	@git clean -fdx
 
-run-http-server:
-	http-server -p $(HTTP_SERVER_PORT) -a $(HTTP_SERVER_ADDRESS) $(HTTP_SERVER_DOCUMENT_ROOT) &
-
-adobe-source-code-pro-fonts: run-http-server
+adobe-source-code-pro-fonts:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -19,7 +16,7 @@ adobe-source-code-pro-fonts: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-balance: run-http-server
+balance:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -29,7 +26,7 @@ balance: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-bash-snippets: run-http-server
+bash-snippets:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -39,7 +36,7 @@ bash-snippets: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-bcal: run-http-server
+bcal:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -49,7 +46,7 @@ bcal: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-bfs: run-http-server
+bfs:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -59,7 +56,7 @@ bfs: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-box2: composer
+box2:composer
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -69,7 +66,7 @@ box2: composer
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-bup: run-http-server
+bup:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -79,7 +76,7 @@ bup: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-cgit-filter-syntaxhiglight: run-http-server
+cgit-filter-syntaxhiglight:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -89,7 +86,7 @@ cgit-filter-syntaxhiglight: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-cheat: run-http-server
+cheat:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -99,7 +96,7 @@ cheat: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-completion-ruby: run-http-server
+completion-ruby:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -109,7 +106,7 @@ completion-ruby: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-composer: run-http-server
+composer:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -119,7 +116,7 @@ composer: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-ctop: run-http-server
+ctop:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -129,7 +126,7 @@ ctop: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-dockerize: run-http-server
+dockerize:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -139,7 +136,7 @@ dockerize: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-easy-rsa: run-http-server
+easy-rsa:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -149,7 +146,7 @@ easy-rsa: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-easy-rsa2: run-http-server
+easy-rsa2:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -159,7 +156,7 @@ easy-rsa2: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-enhancd: run-http-server
+enhancd:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -169,7 +166,7 @@ enhancd: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-extract-x509-cert: run-http-server
+extract-x509-cert:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -179,7 +176,7 @@ extract-x509-cert: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-fakeprovide: run-http-server
+fakeprovide:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -189,7 +186,7 @@ fakeprovide: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-fakeprovide-libappindicator: run-http-server
+fakeprovide-libappindicator:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -199,7 +196,7 @@ fakeprovide-libappindicator: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-fakeprovide-libXScrnSaver: run-http-server
+fakeprovide-libXScrnSaver:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -209,7 +206,7 @@ fakeprovide-libXScrnSaver: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-fakeprovide-openssl-devel: run-http-server
+fakeprovide-openssl-devel:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -219,7 +216,7 @@ fakeprovide-openssl-devel: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-faker-cli: run-http-server
+faker-cli:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -229,7 +226,7 @@ faker-cli: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-fontawesome-fonts: run-http-server
+fontawesome-fonts:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -239,7 +236,7 @@ fontawesome-fonts: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-fzf: run-http-server
+fzf:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -249,7 +246,7 @@ fzf: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-git-extras: run-http-server
+git-extras:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -259,7 +256,7 @@ git-extras: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-greenmail: run-http-server
+greenmail:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -269,7 +266,7 @@ greenmail: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-hstr: run-http-server
+hstr:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -279,7 +276,7 @@ hstr: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-http-prompt: run-http-server
+http-prompt:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -289,7 +286,7 @@ http-prompt: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-icdiff: run-http-server
+icdiff:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -299,7 +296,7 @@ icdiff: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-jetbrains-download-scripts: run-http-server
+jetbrains-download-scripts:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -309,7 +306,7 @@ jetbrains-download-scripts: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-jetbrains-toolbox: run-http-server
+jetbrains-toolbox:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -319,7 +316,7 @@ jetbrains-toolbox: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-jmeter: run-http-server
+jmeter:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -329,7 +326,7 @@ jmeter: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-json-tools: run-http-server
+json-tools:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -339,7 +336,7 @@ json-tools: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-krunner-kopetecontacts: run-http-server
+krunner-kopetecontacts:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -349,7 +346,7 @@ krunner-kopetecontacts: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-libpuzzle: run-http-server
+libpuzzle:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -359,7 +356,7 @@ libpuzzle: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-mailhog: run-http-server
+mailhog:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -369,7 +366,7 @@ mailhog: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-mkosi: run-http-server
+mkosi:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -379,7 +376,7 @@ mkosi: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-monoid: run-http-server
+monoid:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -389,7 +386,7 @@ monoid: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-mphp-switcher: run-http-server
+mphp-switcher:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -399,7 +396,7 @@ mphp-switcher: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-mycli: run-http-server
+mycli:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -409,7 +406,7 @@ mycli: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-nerd-fonts: run-http-server
+nerd-fonts:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -419,7 +416,7 @@ nerd-fonts: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-ngrok-client: run-http-server
+ngrok-client:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -429,7 +426,7 @@ ngrok-client: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-O-Saft: run-http-server
+O-Saft:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -439,7 +436,7 @@ O-Saft: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-owasp-zap: run-http-server
+owasp-zap:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -449,7 +446,7 @@ owasp-zap: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-packer: run-http-server
+packer:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -459,7 +456,7 @@ packer: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-par2: run-http-server
+par2:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -469,7 +466,7 @@ par2: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-password-store-import: run-http-server
+password-store-import:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -479,7 +476,7 @@ password-store-import: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-perl-MIME-Types: run-http-server
+perl-MIME-Types:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -489,7 +486,7 @@ perl-MIME-Types: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-phing: composer
+phing:composer
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -499,7 +496,7 @@ phing: composer
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-phinx: composer
+phinx:composer
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -509,7 +506,7 @@ phinx: composer
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php: run-http-server
+php:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -519,7 +516,7 @@ php: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php53v: run-http-server
+php53v:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -529,7 +526,7 @@ php53v: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php53v-gearman: php53v
+php53v-gearman:php53v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -539,7 +536,7 @@ php53v-gearman: php53v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php53v-imagick: php53v
+php53v-imagick:php53v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -549,7 +546,7 @@ php53v-imagick: php53v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php53v-mailparse: php53v
+php53v-mailparse:php53v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -559,7 +556,7 @@ php53v-mailparse: php53v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php53v-ssh2: php53v
+php53v-ssh2:php53v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -569,7 +566,7 @@ php53v-ssh2: php53v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php53v-xdebug: php53v
+php53v-xdebug:php53v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -579,7 +576,7 @@ php53v-xdebug: php53v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php54v: run-http-server
+php54v:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -589,7 +586,7 @@ php54v: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php54v-gearman: php54v
+php54v-gearman:php54v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -599,7 +596,7 @@ php54v-gearman: php54v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php54v-imagick: php54v
+php54v-imagick:php54v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -609,7 +606,7 @@ php54v-imagick: php54v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php54v-mailparse: php54v
+php54v-mailparse:php54v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -619,7 +616,7 @@ php54v-mailparse: php54v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php54v-ssh2: php54v
+php54v-ssh2:php54v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -629,7 +626,7 @@ php54v-ssh2: php54v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php54v-xdebug: php54v
+php54v-xdebug:php54v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -639,7 +636,7 @@ php54v-xdebug: php54v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php55v: run-http-server
+php55v:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -649,7 +646,7 @@ php55v: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php55v-gearman: php55v
+php55v-gearman:php55v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -659,7 +656,7 @@ php55v-gearman: php55v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php55v-imagick: php55v
+php55v-imagick:php55v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -669,7 +666,7 @@ php55v-imagick: php55v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php55v-mailparse: php55v
+php55v-mailparse:php55v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -679,7 +676,7 @@ php55v-mailparse: php55v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php55v-redis: php55v
+php55v-redis:php55v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -689,7 +686,7 @@ php55v-redis: php55v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php55v-ssh2: php55v
+php55v-ssh2:php55v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -699,7 +696,7 @@ php55v-ssh2: php55v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php55v-xdebug: php55v
+php55v-xdebug:php55v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -709,7 +706,7 @@ php55v-xdebug: php55v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php56v: run-http-server
+php56v:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -719,7 +716,7 @@ php56v: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php56v-gearman: php56v
+php56v-gearman:php56v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -729,7 +726,7 @@ php56v-gearman: php56v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php56v-imagick: php56v
+php56v-imagick:php56v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -739,7 +736,7 @@ php56v-imagick: php56v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php56v-mailparse: php56v
+php56v-mailparse:php56v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -749,7 +746,7 @@ php56v-mailparse: php56v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php56v-redis: php56v
+php56v-redis:php56v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -759,7 +756,7 @@ php56v-redis: php56v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php56v-ssh2: php56v
+php56v-ssh2:php56v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -769,7 +766,7 @@ php56v-ssh2: php56v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php56v-xdebug: php56v
+php56v-xdebug:php56v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -779,7 +776,7 @@ php56v-xdebug: php56v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php5-redis: run-http-server
+php5-redis:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -789,7 +786,7 @@ php5-redis: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php70v: run-http-server
+php70v:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -799,7 +796,7 @@ php70v: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php70v-gearman: php70v
+php70v-gearman:php70v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -809,7 +806,7 @@ php70v-gearman: php70v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php70v-imagick: php70v
+php70v-imagick:php70v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -819,7 +816,7 @@ php70v-imagick: php70v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php70v-mailparse: php70v
+php70v-mailparse:php70v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -829,7 +826,7 @@ php70v-mailparse: php70v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php70v-redis: php70v
+php70v-redis:php70v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -839,7 +836,7 @@ php70v-redis: php70v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php70v-xdebug: php70v
+php70v-xdebug:php70v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -849,7 +846,7 @@ php70v-xdebug: php70v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php71v: run-http-server
+php71v:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -859,7 +856,7 @@ php71v: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php71v-gearman: php71v
+php71v-gearman:php71v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -869,7 +866,7 @@ php71v-gearman: php71v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php71v-imagick: php71v
+php71v-imagick:php71v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -879,7 +876,7 @@ php71v-imagick: php71v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php71v-mailparse: php71v
+php71v-mailparse:php71v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -889,7 +886,7 @@ php71v-mailparse: php71v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php71v-redis: php71v
+php71v-redis:php71v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -899,7 +896,7 @@ php71v-redis: php71v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php71v-xdebug: php71v
+php71v-xdebug:php71v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -909,7 +906,7 @@ php71v-xdebug: php71v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php-build: run-http-server
+php-build:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -919,7 +916,7 @@ php-build: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-PHP_CodeSniffer: composer
+PHP_CodeSniffer:composer
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -929,7 +926,7 @@ PHP_CodeSniffer: composer
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-PHPCompatibility: composer
+PHPCompatibility:composer
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -939,7 +936,7 @@ PHPCompatibility: composer
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-php-development-scripts: run-http-server
+php-development-scripts:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -949,7 +946,7 @@ php-development-scripts: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-phpldapadmin: run-http-server
+phpldapadmin:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -959,7 +956,7 @@ phpldapadmin: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-phpMyAdmin40: run-http-server
+phpMyAdmin40:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -969,7 +966,7 @@ phpMyAdmin40: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-phpmyadmin-curl-export: run-http-server
+phpmyadmin-curl-export:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -979,7 +976,7 @@ phpmyadmin-curl-export: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-plantuml: run-http-server
+plantuml:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -989,7 +986,7 @@ plantuml: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-postman: run-http-server
+postman:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -999,7 +996,7 @@ postman: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-python-dpath: run-http-server
+python-dpath:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1009,7 +1006,7 @@ python-dpath: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-python-mitmproxy: run-http-server
+python-mitmproxy:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1019,7 +1016,7 @@ python-mitmproxy: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-python-mitmproxy-bundled: run-http-server
+python-mitmproxy-bundled:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1029,7 +1026,7 @@ python-mitmproxy-bundled: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-python-parsimonious: run-http-server
+python-parsimonious:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1039,7 +1036,7 @@ python-parsimonious: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-python-prompt_toolkit: run-http-server
+python-prompt_toolkit:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1049,7 +1046,7 @@ python-prompt_toolkit: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-python-sphinxcontrib-documentedlist: run-http-server
+python-sphinxcontrib-documentedlist:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1059,7 +1056,7 @@ python-sphinxcontrib-documentedlist: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-rr: run-http-server
+rr:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1069,7 +1066,7 @@ rr: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-ruby-build: run-http-server
+ruby-build:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1079,7 +1076,7 @@ ruby-build: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-selenium: run-http-server
+selenium:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1089,7 +1086,7 @@ selenium: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-selenium-chromedriver: run-http-server
+selenium-chromedriver:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1099,7 +1096,7 @@ selenium-chromedriver: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-skipfish: run-http-server
+skipfish:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1109,7 +1106,7 @@ skipfish: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-smtp-cli: run-http-server
+smtp-cli:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1119,7 +1116,7 @@ smtp-cli: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-snowbox: run-http-server
+snowbox:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1129,7 +1126,7 @@ snowbox: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-SoapUI: run-http-server
+SoapUI:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1139,7 +1136,7 @@ SoapUI: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-sslscan: run-http-server
+sslscan:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1149,7 +1146,7 @@ sslscan: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-susepaste-qt: run-http-server
+susepaste-qt:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1159,7 +1156,7 @@ susepaste-qt: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-swaks: run-http-server
+swaks:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1169,7 +1166,7 @@ swaks: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-telegram-desktop: run-http-server
+telegram-desktop:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1179,7 +1176,7 @@ telegram-desktop: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-termshare: run-http-server
+termshare:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1189,7 +1186,7 @@ termshare: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-toxiproxy: run-http-server
+toxiproxy:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1199,7 +1196,7 @@ toxiproxy: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-traefik: run-http-server
+traefik:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1209,7 +1206,7 @@ traefik: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-translate-shell: run-http-server
+translate-shell:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1219,7 +1216,7 @@ translate-shell: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-undocker: run-http-server
+undocker:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1229,7 +1226,7 @@ undocker: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-xdebug-tmpfiles: run-http-server
+xdebug-tmpfiles:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1239,7 +1236,7 @@ xdebug-tmpfiles: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-xrectsel: run-http-server
+xrectsel:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1249,7 +1246,7 @@ xrectsel: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-yadm: run-http-server
+yadm:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1259,7 +1256,7 @@ yadm: run-http-server
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-yum-scripts: run-http-server
+yum-scripts:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1272,4 +1269,4 @@ yum-scripts: run-http-server
 all: adobe-source-code-pro-fonts balance bash-snippets bcal bfs box2 bup cgit-filter-syntaxhiglight cheat completion-ruby composer ctop dockerize easy-rsa easy-rsa2 enhancd extract-x509-cert fakeprovide fakeprovide-libappindicator fakeprovide-libXScrnSaver fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf git-extras greenmail hstr http-prompt icdiff jetbrains-download-scripts jetbrains-toolbox jmeter json-tools krunner-kopetecontacts libpuzzle mailhog mkosi monoid mphp-switcher mycli nerd-fonts ngrok-client O-Saft owasp-zap packer par2 password-store-import perl-MIME-Types phing phinx php php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 php53v-xdebug php54v php54v-gearman php54v-imagick php54v-mailparse php54v-ssh2 php54v-xdebug php55v php55v-gearman php55v-imagick php55v-mailparse php55v-redis php55v-ssh2 php55v-xdebug php56v php56v-gearman php56v-imagick php56v-mailparse php56v-redis php56v-ssh2 php56v-xdebug php5-redis php70v php70v-gearman php70v-imagick php70v-mailparse php70v-redis php70v-xdebug php71v php71v-gearman php71v-imagick php71v-mailparse php71v-redis php71v-xdebug php-build PHP_CodeSniffer PHPCompatibility php-development-scripts phpldapadmin phpMyAdmin40 phpmyadmin-curl-export plantuml postman python-dpath python-mitmproxy python-mitmproxy-bundled python-parsimonious python-prompt_toolkit python-sphinxcontrib-documentedlist rr ruby-build selenium selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan susepaste-qt swaks telegram-desktop termshare toxiproxy traefik translate-shell undocker xdebug-tmpfiles xrectsel yadm yum-scripts
 	echo "Start build ALL packages"
 
-.PHONY: all clean run-http-server adobe-source-code-pro-fonts balance bash-snippets bcal bfs box2 bup cgit-filter-syntaxhiglight cheat completion-ruby composer ctop dockerize easy-rsa easy-rsa2 enhancd extract-x509-cert fakeprovide fakeprovide-libappindicator fakeprovide-libXScrnSaver fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf git-extras greenmail hstr http-prompt icdiff jetbrains-download-scripts jetbrains-toolbox jmeter json-tools krunner-kopetecontacts libpuzzle mailhog mkosi monoid mphp-switcher mycli nerd-fonts ngrok-client O-Saft owasp-zap packer par2 password-store-import perl-MIME-Types phing phinx php php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 php53v-xdebug php54v php54v-gearman php54v-imagick php54v-mailparse php54v-ssh2 php54v-xdebug php55v php55v-gearman php55v-imagick php55v-mailparse php55v-redis php55v-ssh2 php55v-xdebug php56v php56v-gearman php56v-imagick php56v-mailparse php56v-redis php56v-ssh2 php56v-xdebug php5-redis php70v php70v-gearman php70v-imagick php70v-mailparse php70v-redis php70v-xdebug php71v php71v-gearman php71v-imagick php71v-mailparse php71v-redis php71v-xdebug php-build PHP_CodeSniffer PHPCompatibility php-development-scripts phpldapadmin phpMyAdmin40 phpmyadmin-curl-export plantuml postman python-dpath python-mitmproxy python-mitmproxy-bundled python-parsimonious python-prompt_toolkit python-sphinxcontrib-documentedlist rr ruby-build selenium selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan susepaste-qt swaks telegram-desktop termshare toxiproxy traefik translate-shell undocker xdebug-tmpfiles xrectsel yadm yum-scripts
+.PHONY: all clean  adobe-source-code-pro-fonts balance bash-snippets bcal bfs box2 bup cgit-filter-syntaxhiglight cheat completion-ruby composer ctop dockerize easy-rsa easy-rsa2 enhancd extract-x509-cert fakeprovide fakeprovide-libappindicator fakeprovide-libXScrnSaver fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf git-extras greenmail hstr http-prompt icdiff jetbrains-download-scripts jetbrains-toolbox jmeter json-tools krunner-kopetecontacts libpuzzle mailhog mkosi monoid mphp-switcher mycli nerd-fonts ngrok-client O-Saft owasp-zap packer par2 password-store-import perl-MIME-Types phing phinx php php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 php53v-xdebug php54v php54v-gearman php54v-imagick php54v-mailparse php54v-ssh2 php54v-xdebug php55v php55v-gearman php55v-imagick php55v-mailparse php55v-redis php55v-ssh2 php55v-xdebug php56v php56v-gearman php56v-imagick php56v-mailparse php56v-redis php56v-ssh2 php56v-xdebug php5-redis php70v php70v-gearman php70v-imagick php70v-mailparse php70v-redis php70v-xdebug php71v php71v-gearman php71v-imagick php71v-mailparse php71v-redis php71v-xdebug php-build PHP_CodeSniffer PHPCompatibility php-development-scripts phpldapadmin phpMyAdmin40 phpmyadmin-curl-export plantuml postman python-dpath python-mitmproxy python-mitmproxy-bundled python-parsimonious python-prompt_toolkit python-sphinxcontrib-documentedlist rr ruby-build selenium selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan susepaste-qt swaks telegram-desktop termshare toxiproxy traefik translate-shell undocker xdebug-tmpfiles xrectsel yadm yum-scripts
