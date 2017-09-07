@@ -906,6 +906,66 @@ php71v-xdebug:php71v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
+php72v:
+	@echo Start build $@
+	@cd $@
+	@vagrant destroy --force
+	@vagrant up
+	@vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee rpmbuild.log
+	@vagrant destroy --force
+	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+	@cd ..
+
+php72v-gearman:php72v
+	@echo Start build $@
+	@cd $@
+	@vagrant destroy --force
+	@vagrant up
+	@vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee rpmbuild.log
+	@vagrant destroy --force
+	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+	@cd ..
+
+php72v-imagick:php72v
+	@echo Start build $@
+	@cd $@
+	@vagrant destroy --force
+	@vagrant up
+	@vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee rpmbuild.log
+	@vagrant destroy --force
+	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+	@cd ..
+
+php72v-mailparse:php72v
+	@echo Start build $@
+	@cd $@
+	@vagrant destroy --force
+	@vagrant up
+	@vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee rpmbuild.log
+	@vagrant destroy --force
+	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+	@cd ..
+
+php72v-redis:php72v
+	@echo Start build $@
+	@cd $@
+	@vagrant destroy --force
+	@vagrant up
+	@vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee rpmbuild.log
+	@vagrant destroy --force
+	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+	@cd ..
+
+php72v-xdebug:php72v
+	@echo Start build $@
+	@cd $@
+	@vagrant destroy --force
+	@vagrant up
+	@vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee rpmbuild.log
+	@vagrant destroy --force
+	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+	@cd ..
+
 php-build:
 	@echo Start build $@
 	@cd $@
@@ -1266,10 +1326,13 @@ yum-scripts:
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
-all: adobe-source-code-pro-fonts balance bash-snippets bcal bfs box2 bup cgit-filter-syntaxhiglight cheat completion-ruby composer ctop dockerize easy-rsa easy-rsa2 enhancd extract-x509-cert fakeprovide fakeprovide-libappindicator fakeprovide-libXScrnSaver fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf git-extras greenmail hstr http-prompt icdiff jetbrains-download-scripts jetbrains-toolbox jmeter json-tools krunner-kopetecontacts libpuzzle mailhog mkosi monoid mphp-switcher mycli nerd-fonts ngrok-client O-Saft owasp-zap packer par2 password-store-import perl-MIME-Types phing phinx php php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 php53v-xdebug php54v php54v-gearman php54v-imagick php54v-mailparse php54v-ssh2 php54v-xdebug php55v php55v-gearman php55v-imagick php55v-mailparse php55v-redis php55v-ssh2 php55v-xdebug php56v php56v-gearman php56v-imagick php56v-mailparse php56v-redis php56v-ssh2 php56v-xdebug php5-redis php70v php70v-gearman php70v-imagick php70v-mailparse php70v-redis php70v-xdebug php71v php71v-gearman php71v-imagick php71v-mailparse php71v-redis php71v-xdebug php-build PHP_CodeSniffer PHPCompatibility php-development-scripts phpldapadmin phpMyAdmin40 phpmyadmin-curl-export plantuml postman python-dpath python-mitmproxy python-mitmproxy-bundled python-parsimonious python-prompt_toolkit python-sphinxcontrib-documentedlist rr ruby-build selenium selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan susepaste-qt swaks telegram-desktop termshare toxiproxy traefik translate-shell undocker xdebug-tmpfiles xrectsel yadm yum-scripts
+all: adobe-source-code-pro-fonts balance bash-snippets bcal bfs box2 bup cgit-filter-syntaxhiglight cheat completion-ruby composer ctop dockerize easy-rsa easy-rsa2 enhancd extract-x509-cert fakeprovide fakeprovide-libappindicator fakeprovide-libXScrnSaver fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf git-extras greenmail hstr http-prompt icdiff jetbrains-download-scripts jetbrains-toolbox jmeter json-tools krunner-kopetecontacts libpuzzle mailhog mkosi monoid mphp-switcher mycli nerd-fonts ngrok-client O-Saft owasp-zap packer par2 password-store-import perl-MIME-Types phing phinx php php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 php53v-xdebug php54v php54v-gearman php54v-imagick php54v-mailparse php54v-ssh2 php54v-xdebug php55v php55v-gearman php55v-imagick php55v-mailparse php55v-redis php55v-ssh2 php55v-xdebug php56v php56v-gearman php56v-imagick php56v-mailparse php56v-redis php56v-ssh2 php56v-xdebug php5-redis php70v php70v-gearman php70v-imagick php70v-mailparse php70v-redis php70v-xdebug php71v php71v-gearman php71v-imagick php71v-mailparse php71v-redis php71v-xdebug php72v php72v-gearman php72v-imagick php72v-mailparse php72v-redis php72v-xdebug php-build PHP_CodeSniffer PHPCompatibility php-development-scripts phpldapadmin phpMyAdmin40 phpmyadmin-curl-export plantuml postman python-dpath python-mitmproxy python-mitmproxy-bundled python-parsimonious python-prompt_toolkit python-sphinxcontrib-documentedlist rr ruby-build selenium selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan susepaste-qt swaks telegram-desktop termshare toxiproxy traefik translate-shell undocker xdebug-tmpfiles xrectsel yadm yum-scripts
 	echo "Start build ALL packages"
 
 php53v-all: php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 php53v-xdebug
 	echo "Start build ALL packages"
 
-.PHONY: all clean  adobe-source-code-pro-fonts balance bash-snippets bcal bfs box2 bup cgit-filter-syntaxhiglight cheat completion-ruby composer ctop dockerize easy-rsa easy-rsa2 enhancd extract-x509-cert fakeprovide fakeprovide-libappindicator fakeprovide-libXScrnSaver fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf git-extras greenmail hstr http-prompt icdiff jetbrains-download-scripts jetbrains-toolbox jmeter json-tools krunner-kopetecontacts libpuzzle mailhog mkosi monoid mphp-switcher mycli nerd-fonts ngrok-client O-Saft owasp-zap packer par2 password-store-import perl-MIME-Types phing phinx php php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 php53v-xdebug php54v php54v-gearman php54v-imagick php54v-mailparse php54v-ssh2 php54v-xdebug php55v php55v-gearman php55v-imagick php55v-mailparse php55v-redis php55v-ssh2 php55v-xdebug php56v php56v-gearman php56v-imagick php56v-mailparse php56v-redis php56v-ssh2 php56v-xdebug php5-redis php70v php70v-gearman php70v-imagick php70v-mailparse php70v-redis php70v-xdebug php71v php71v-gearman php71v-imagick php71v-mailparse php71v-redis php71v-xdebug php-build PHP_CodeSniffer PHPCompatibility php-development-scripts phpldapadmin phpMyAdmin40 phpmyadmin-curl-export plantuml postman python-dpath python-mitmproxy python-mitmproxy-bundled python-parsimonious python-prompt_toolkit python-sphinxcontrib-documentedlist rr ruby-build selenium selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan susepaste-qt swaks telegram-desktop termshare toxiproxy traefik translate-shell undocker xdebug-tmpfiles xrectsel yadm yum-scripts php53v-all
+php72v-all: php72v php72v-gearman php72v-imagick php72v-mailparse php72v-xdebug
+	echo "Start build ALL php72v packages"
+
+.PHONY: all clean  adobe-source-code-pro-fonts balance bash-snippets bcal bfs box2 bup cgit-filter-syntaxhiglight cheat completion-ruby composer ctop dockerize easy-rsa easy-rsa2 enhancd extract-x509-cert fakeprovide fakeprovide-libappindicator fakeprovide-libXScrnSaver fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf git-extras greenmail hstr http-prompt icdiff jetbrains-download-scripts jetbrains-toolbox jmeter json-tools krunner-kopetecontacts libpuzzle mailhog mkosi monoid mphp-switcher mycli nerd-fonts ngrok-client O-Saft owasp-zap packer par2 password-store-import perl-MIME-Types phing phinx php php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 php53v-xdebug php54v php54v-gearman php54v-imagick php54v-mailparse php54v-ssh2 php54v-xdebug php55v php55v-gearman php55v-imagick php55v-mailparse php55v-redis php55v-ssh2 php55v-xdebug php56v php56v-gearman php56v-imagick php56v-mailparse php56v-redis php56v-ssh2 php56v-xdebug php5-redis php70v php70v-gearman php70v-imagick php70v-mailparse php70v-redis php70v-xdebug php71v php71v-gearman php71v-imagick php71v-mailparse php71v-redis php71v-xdebug php72v php72v-gearman php72v-imagick php72v-mailparse php72v-redis php72v-xdebug php-build PHP_CodeSniffer PHPCompatibility php-development-scripts phpldapadmin phpMyAdmin40 phpmyadmin-curl-export plantuml postman python-dpath python-mitmproxy python-mitmproxy-bundled python-parsimonious python-prompt_toolkit python-sphinxcontrib-documentedlist rr ruby-build selenium selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan susepaste-qt swaks telegram-desktop termshare toxiproxy traefik translate-shell undocker xdebug-tmpfiles xrectsel yadm yum-scripts php53v-all php72v-all
