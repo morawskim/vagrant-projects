@@ -836,6 +836,16 @@ php70v-redis:php70v
 	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 	@cd ..
 
+php70v-sodium:php70v
+	@echo Start build $@
+	@cd $@
+	@vagrant destroy --force
+	@vagrant up
+	@vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee rpmbuild.log
+	@vagrant destroy --force
+	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+	@cd ..
+
 php70v-xdebug:php70v
 	@echo Start build $@
 	@cd $@
@@ -887,6 +897,16 @@ php71v-mailparse:php71v
 	@cd ..
 
 php71v-redis:php71v
+	@echo Start build $@
+	@cd $@
+	@vagrant destroy --force
+	@vagrant up
+	@vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee rpmbuild.log
+	@vagrant destroy --force
+	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+	@cd ..
+
+php71v-sodium:php71v
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1087,6 +1107,16 @@ python-mitmproxy-bundled:
 	@cd ..
 
 python-parsimonious:
+	@echo Start build $@
+	@cd $@
+	@vagrant destroy --force
+	@vagrant up
+	@vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee rpmbuild.log
+	@vagrant destroy --force
+	@cp -vr ./rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+	@cd ..
+
+python-pipsi:
 	@echo Start build $@
 	@cd $@
 	@vagrant destroy --force
@@ -1341,13 +1371,13 @@ all: adobe-source-code-pro-fonts balance bash-snippets bcal bfs box2 bup \
 	php55v-mailparse php55v-redis php55v-ssh2 php55v-xdebug php56v \
 	php56v-gearman php56v-imagick php56v-mailparse php56v-redis php56v-ssh2 \
 	php56v-xdebug php5-redis php70v php70v-gearman php70v-imagick \
-	php70v-mailparse php70v-redis php70v-xdebug php71v php71v-gearman \
-	php71v-imagick php71v-mailparse php71v-redis php71v-xdebug php72v \
+	php70v-mailparse php70v-redis php70v-sodium php70v-xdebug php71v php71v-gearman \
+	php71v-imagick php71v-mailparse php71v-redis php71v-sodium php71v-xdebug php72v \
 	php72v-gearman php72v-imagick php72v-mailparse php72v-redis \
 	php72v-xdebug php-build PHP_CodeSniffer PHPCompatibility \
 	php-development-scripts phpldapadmin phpMyAdmin40 \
 	phpmyadmin-curl-export plantuml postman python-dpath python-mitmproxy \
-	python-mitmproxy-bundled python-parsimonious python-prompt_toolkit \
+	python-mitmproxy-bundled python-parsimonious python-pipsi python-prompt_toolkit \
 	python-sphinxcontrib-documentedlist rr ruby-build selenium \
 	selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan \
 	susepaste-qt swaks telegram-desktop termshare toxiproxy traefik \
@@ -1375,13 +1405,13 @@ php72v-all: php72v php72v-gearman php72v-imagick php72v-mailparse php72v-xdebug
 	php55v-mailparse php55v-redis php55v-ssh2 php55v-xdebug php56v \
 	php56v-gearman php56v-imagick php56v-mailparse php56v-redis php56v-ssh2 \
 	php56v-xdebug php5-redis php70v php70v-gearman php70v-imagick \
-	php70v-mailparse php70v-redis php70v-xdebug php71v php71v-gearman \
-	php71v-imagick php71v-mailparse php71v-redis php71v-xdebug php72v \
+	php70v-mailparse php70v-redis php70v-sodium php70v-xdebug php71v php71v-gearman \
+	php71v-imagick php71v-mailparse php71v-redis php71v-sodium php71v-xdebug php72v \
 	php72v-gearman php72v-imagick php72v-mailparse php72v-redis \
 	php72v-xdebug php-build PHP_CodeSniffer PHPCompatibility \
 	php-development-scripts phpldapadmin phpMyAdmin40 \
 	phpmyadmin-curl-export plantuml postman python-dpath python-mitmproxy \
-	python-mitmproxy-bundled python-parsimonious python-prompt_toolkit \
+	python-mitmproxy-bundled python-parsimonious python-pipsi python-prompt_toolkit \
 	python-sphinxcontrib-documentedlist rr ruby-build selenium \
 	selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan \
 	susepaste-qt swaks telegram-desktop termshare toxiproxy traefik \
