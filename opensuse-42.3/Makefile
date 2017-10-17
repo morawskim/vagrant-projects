@@ -829,6 +829,14 @@ php-development-scripts:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
+php-docs:
+	@echo Start build $@
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@VAGRANT_CWD="$(PWD)/$@" vagrant up
+	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee rpmbuild.log
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+
 phpldapadmin:
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -1112,7 +1120,7 @@ all: adobe-source-code-pro-fonts balance bash-snippets bcal bfs box2 bup \
 	php71v-imagick php71v-mailparse php71v-redis php71v-sodium php71v-xdebug php72v \
 	php72v-gearman php72v-imagick php72v-mailparse php72v-redis \
 	php72v-xdebug php-build PHP_CodeSniffer PHPCompatibility \
-	php-development-scripts phpldapadmin phpMyAdmin40 \
+	php-development-scripts php-docs phpldapadmin phpMyAdmin40 \
 	phpmyadmin-curl-export plantuml postman python-dpath python-mitmproxy \
 	python-mitmproxy-bundled python-parsimonious python-pipsi python-prompt_toolkit \
 	python-sphinxcontrib-documentedlist rr ruby-build selenium \
@@ -1146,7 +1154,7 @@ php72v-all: php72v php72v-gearman php72v-imagick php72v-mailparse php72v-xdebug
 	php71v-imagick php71v-mailparse php71v-redis php71v-sodium php71v-xdebug php72v \
 	php72v-gearman php72v-imagick php72v-mailparse php72v-redis \
 	php72v-xdebug php-build PHP_CodeSniffer PHPCompatibility \
-	php-development-scripts phpldapadmin phpMyAdmin40 \
+	php-development-scripts php-docs phpldapadmin phpMyAdmin40 \
 	phpmyadmin-curl-export plantuml postman python-dpath python-mitmproxy \
 	python-mitmproxy-bundled python-parsimonious python-pipsi python-prompt_toolkit \
 	python-sphinxcontrib-documentedlist rr ruby-build selenium \
