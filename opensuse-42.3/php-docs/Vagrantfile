@@ -55,6 +55,11 @@ Vagrant.configure(2) do |config|
   # https://github.com/mitchellh/vagrant/issues/7648
   config.vm.provider 'virtualbox' do |vb|
     vb.customize ['modifyvm', :id, '--cableconnected1', 'on']
+    # Generating php-docs consume a lot of memory. Our process is killed.
+    #
+    # Loading and parsing manual.xml... /var/tmp/rpm-tmp.qJXcrI: line 32:
+    # 24502 Killed                  php doc-en/doc-base/configure.php
+    vb.memory = 2048
   end
   #
   # View the documentation for the provider you are using for more
