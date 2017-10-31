@@ -13,6 +13,14 @@ adobe-source-code-pro-fonts:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
+asdf:
+	@echo Start build $@
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@VAGRANT_CWD="$(PWD)/$@" vagrant up
+	@VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee rpmbuild.log
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+
 balance:
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -1101,7 +1109,7 @@ yum-scripts:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-all: adobe-source-code-pro-fonts balance bash-snippets bcal bfs box2 bup \
+all: adobe-source-code-pro-fonts asdf balance bash-snippets bcal bfs box2 bup \
 	cgit-filter-syntaxhiglight cheat completion-ruby composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd extract-x509-cert fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
@@ -1135,7 +1143,7 @@ php53v-all: php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 ph
 php72v-all: php72v php72v-gearman php72v-imagick php72v-mailparse php72v-xdebug
 	echo "Start build ALL php72v packages"
 
-.PHONY: all clean  adobe-source-code-pro-fonts balance bash-snippets bcal bfs \
+.PHONY: all clean  adobe-source-code-pro-fonts asdf balance bash-snippets bcal bfs \
 	box2 bup cgit-filter-syntaxhiglight cheat completion-ruby composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd extract-x509-cert fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
