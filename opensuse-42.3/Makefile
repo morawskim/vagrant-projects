@@ -213,6 +213,14 @@ fzf:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
+git-crypt:
+	@echo Start build $@
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@VAGRANT_CWD="$(PWD)/$@" vagrant up
+	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee rpmbuild.log
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+
 git-extras:
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -1097,7 +1105,7 @@ all: adobe-source-code-pro-fonts asdf balance bash-snippets bcal bfs box2 bup \
 	cgit-filter-syntaxhiglight cheat cloudflare-tools completion-ruby composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd extract-x509-cert fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
-	fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf git-extras \
+	fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf git-crypt git-extras \
 	greenmail hstr http-prompt hub icdiff \
 	jetbrains-toolbox jmeter json-tools krunner-kopetecontacts libpuzzle \
 	mailhog mkosi monoid mycli nerd-fonts ngrok-client O-Saft \
@@ -1131,7 +1139,7 @@ php72v-all: php72v php72v-gearman php72v-imagick php72v-mailparse php72v-xdebug
 	box2 bup cgit-filter-syntaxhiglight cheat cloudflare-tools completion-ruby composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd extract-x509-cert fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
-	fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf git-extras \
+	fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf git-crypt git-extras \
 	greenmail hstr http-prompt hub icdiff \
 	jetbrains-toolbox jmeter json-tools krunner-kopetecontacts libpuzzle \
 	mailhog mkosi monoid mycli nerd-fonts ngrok-client O-Saft \
