@@ -1021,6 +1021,14 @@ swaks:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
+tcpproxy:
+	@echo Start build $@
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@VAGRANT_CWD="$(PWD)/$@" vagrant up
+	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee rpmbuild.log
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+
 telegram-desktop:
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -1125,7 +1133,7 @@ all: adobe-source-code-pro-fonts asdf balance bash-snippets bcal bfs box2 bup \
 	python-mitmproxy-bundled python-parsimonious python-pipsi python-prompt_toolkit \
 	python-sphinxcontrib-documentedlist rr ruby-build selenium \
 	selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan \
-	susepaste-qt swaks telegram-desktop termshare toxiproxy traefik \
+	susepaste-qt swaks tcpproxy telegram-desktop termshare toxiproxy traefik \
 	translate-shell undocker xdebug-tmpfiles xrectsel yadm yum-scripts
 	echo "Start build ALL packages"
 
@@ -1159,6 +1167,6 @@ php72v-all: php72v php72v-gearman php72v-imagick php72v-mailparse php72v-xdebug
 	python-mitmproxy-bundled python-parsimonious python-pipsi python-prompt_toolkit \
 	python-sphinxcontrib-documentedlist rr ruby-build selenium \
 	selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan \
-	susepaste-qt swaks telegram-desktop termshare toxiproxy traefik \
+	susepaste-qt swaks tcpproxy telegram-desktop termshare toxiproxy traefik \
 	translate-shell undocker xdebug-tmpfiles xrectsel yadm yum-scripts \
 	php53v-all php72v-all
