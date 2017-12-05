@@ -1155,7 +1155,7 @@ all: adobe-source-code-pro-fonts asdf balance bash-snippets bcal bfs box2 bup \
 php53v-all: php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 php53v-xdebug
 	echo "Start build ALL packages"
 
-php72v-all: php72v php72v-gearman php72v-imagick php72v-mailparse php72v-xdebug
+php72v-all: php72v php72v-gearman php72v-imagick php72v-mailparse php72v-redis php72v-xdebug
 	echo "Start build ALL php72v packages"
 
 .PHONY: all clean  adobe-source-code-pro-fonts asdf balance bash-snippets bcal bfs \
