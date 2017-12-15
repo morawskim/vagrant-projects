@@ -1,11 +1,9 @@
-HTTP_SERVER_PORT ?= 8080
-HTTP_SERVER_ADDRESS ?= 127.0.0.1
-HTTP_SERVER_DOCUMENT_ROOT ?= /home/marcin/Dokumenty/repo/openSUSE-42.3/
+include Makefile.local
 
 clean:
 	@git clean -fdx
 
-adobe-source-code-pro-fonts:
+adobe-source-code-pro-fonts: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -13,7 +11,7 @@ adobe-source-code-pro-fonts:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-asdf:
+asdf: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -21,7 +19,7 @@ asdf:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-balance:
+balance: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -29,7 +27,7 @@ balance:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-bash-snippets:
+bash-snippets: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -37,7 +35,7 @@ bash-snippets:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-bcal:
+bcal: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -45,7 +43,7 @@ bcal:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-bfs:
+bfs: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -53,7 +51,7 @@ bfs:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-box2:composer
+box2: start-http-server composer
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -61,7 +59,7 @@ box2:composer
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-bup:
+bup: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -69,7 +67,7 @@ bup:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-cgit-filter-syntaxhiglight:
+cgit-filter-syntaxhiglight: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -77,7 +75,7 @@ cgit-filter-syntaxhiglight:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-cheat:
+cheat: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -85,7 +83,7 @@ cheat:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-cloudflare-tools:
+cloudflare-tools: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -93,7 +91,7 @@ cloudflare-tools:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-completion-ruby:
+completion-ruby: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -101,7 +99,7 @@ completion-ruby:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-composer:
+composer: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -109,7 +107,7 @@ composer:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-ctop:
+ctop: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -117,7 +115,7 @@ ctop:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-dockerize:
+dockerize: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -125,7 +123,7 @@ dockerize:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-easy-rsa:
+easy-rsa: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -133,7 +131,7 @@ easy-rsa:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-easy-rsa2:
+easy-rsa2: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -141,7 +139,7 @@ easy-rsa2:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-enhancd:
+enhancd: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -149,7 +147,7 @@ enhancd:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-extract-x509-cert:
+extract-x509-cert: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -157,7 +155,7 @@ extract-x509-cert:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-fakeprovide:
+fakeprovide: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -165,7 +163,7 @@ fakeprovide:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-fakeprovide-libappindicator:
+fakeprovide-libappindicator: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -173,7 +171,7 @@ fakeprovide-libappindicator:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-fakeprovide-libXScrnSaver:
+fakeprovide-libXScrnSaver: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -181,7 +179,7 @@ fakeprovide-libXScrnSaver:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-fakeprovide-openssl-devel:
+fakeprovide-openssl-devel: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -189,7 +187,7 @@ fakeprovide-openssl-devel:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-faker-cli:
+faker-cli: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -197,7 +195,7 @@ faker-cli:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-fontawesome-fonts:
+fontawesome-fonts: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -205,7 +203,7 @@ fontawesome-fonts:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-fzf:
+fzf: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -213,7 +211,7 @@ fzf:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-git-crypt:
+git-crypt: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -221,7 +219,7 @@ git-crypt:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-git-extras:
+git-extras: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -229,7 +227,7 @@ git-extras:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-greenmail:
+greenmail: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -237,7 +235,7 @@ greenmail:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-hstr:
+hstr: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -245,7 +243,7 @@ hstr:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-http-prompt:
+http-prompt: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -253,7 +251,7 @@ http-prompt:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-hub:
+hub: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -261,7 +259,7 @@ hub:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-icdiff:
+icdiff: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -269,7 +267,7 @@ icdiff:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-jetbrains-toolbox:
+jetbrains-toolbox: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -277,7 +275,7 @@ jetbrains-toolbox:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-jmeter:
+jmeter: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -285,7 +283,7 @@ jmeter:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-json-tools:
+json-tools: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -293,7 +291,7 @@ json-tools:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-krunner-kopetecontacts:
+krunner-kopetecontacts: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -301,14 +299,14 @@ krunner-kopetecontacts:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-krunner-skypeforlinux:
+krunner-skypeforlinux: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
 	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee rpmbuild.log
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 
-libpuzzle:
+libpuzzle: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -316,7 +314,7 @@ libpuzzle:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-mailhog:
+mailhog: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -324,7 +322,7 @@ mailhog:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-mkosi:
+mkosi: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -332,7 +330,7 @@ mkosi:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-monoid:
+monoid: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -340,7 +338,7 @@ monoid:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-mycli:
+mycli: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -348,7 +346,7 @@ mycli:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-nerd-fonts:
+nerd-fonts: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -356,7 +354,7 @@ nerd-fonts:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-netsed:
+netsed: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -364,7 +362,7 @@ netsed:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-ngrok-client:
+ngrok-client: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -372,7 +370,7 @@ ngrok-client:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-O-Saft:
+O-Saft: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -380,7 +378,7 @@ O-Saft:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-owasp-zap:
+owasp-zap: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -388,7 +386,7 @@ owasp-zap:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-packer:
+packer: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -396,7 +394,7 @@ packer:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-par2:
+par2: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -404,7 +402,7 @@ par2:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-password-store-import:
+password-store-import: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -412,7 +410,7 @@ password-store-import:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-perl-MIME-Types:
+perl-MIME-Types: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -420,7 +418,7 @@ perl-MIME-Types:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-phing:composer
+phing: start-http-server composer
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -428,7 +426,7 @@ phing:composer
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-phinx:composer
+phinx: start-http-server composer
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -436,7 +434,7 @@ phinx:composer
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php:
+php: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -444,7 +442,7 @@ php:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php53v:
+php53v: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -452,7 +450,7 @@ php53v:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php53v-gearman:php53v
+php53v-gearman: start-http-server php53v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -460,7 +458,7 @@ php53v-gearman:php53v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php53v-imagick:php53v
+php53v-imagick: start-http-server php53v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -468,7 +466,7 @@ php53v-imagick:php53v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php53v-mailparse:php53v
+php53v-mailparse: start-http-server php53v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -476,7 +474,7 @@ php53v-mailparse:php53v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php53v-ssh2:php53v
+php53v-ssh2: start-http-server php53v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -484,7 +482,7 @@ php53v-ssh2:php53v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php53v-xdebug:php53v
+php53v-xdebug: start-http-server php53v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -492,7 +490,7 @@ php53v-xdebug:php53v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php54v:
+php54v: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -500,7 +498,7 @@ php54v:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php54v-gearman:php54v
+php54v-gearman: start-http-server php54v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -508,7 +506,7 @@ php54v-gearman:php54v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php54v-imagick:php54v
+php54v-imagick: start-http-server php54v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -516,7 +514,7 @@ php54v-imagick:php54v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php54v-mailparse:php54v
+php54v-mailparse: start-http-server php54v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -524,7 +522,7 @@ php54v-mailparse:php54v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php54v-ssh2:php54v
+php54v-ssh2: start-http-server php54v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -532,7 +530,7 @@ php54v-ssh2:php54v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php54v-xdebug:php54v
+php54v-xdebug: start-http-server php54v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -540,7 +538,7 @@ php54v-xdebug:php54v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php55v:
+php55v: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -548,7 +546,7 @@ php55v:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php55v-gearman:php55v
+php55v-gearman: start-http-server php55v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -556,7 +554,7 @@ php55v-gearman:php55v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php55v-imagick:php55v
+php55v-imagick: start-http-server php55v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -564,7 +562,7 @@ php55v-imagick:php55v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php55v-mailparse:php55v
+php55v-mailparse: start-http-server php55v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -572,7 +570,7 @@ php55v-mailparse:php55v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php55v-redis:php55v
+php55v-redis: start-http-server php55v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -580,7 +578,7 @@ php55v-redis:php55v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php55v-ssh2:php55v
+php55v-ssh2: start-http-server php55v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -588,7 +586,7 @@ php55v-ssh2:php55v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php55v-xdebug:php55v
+php55v-xdebug: start-http-server php55v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -596,7 +594,7 @@ php55v-xdebug:php55v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php56v:
+php56v: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -604,7 +602,7 @@ php56v:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php56v-gearman:php56v
+php56v-gearman: start-http-server php56v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -612,7 +610,7 @@ php56v-gearman:php56v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php56v-imagick:php56v
+php56v-imagick: start-http-server php56v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -620,7 +618,7 @@ php56v-imagick:php56v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php56v-mailparse:php56v
+php56v-mailparse: start-http-server php56v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -628,7 +626,7 @@ php56v-mailparse:php56v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php56v-redis:php56v
+php56v-redis: start-http-server php56v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -636,7 +634,7 @@ php56v-redis:php56v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php56v-ssh2:php56v
+php56v-ssh2: start-http-server php56v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -644,7 +642,7 @@ php56v-ssh2:php56v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php56v-xdebug:php56v
+php56v-xdebug: start-http-server php56v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -652,7 +650,7 @@ php56v-xdebug:php56v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php5-redis:
+php5-redis: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -660,7 +658,7 @@ php5-redis:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php70v:
+php70v: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -668,7 +666,7 @@ php70v:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php70v-gearman:php70v
+php70v-gearman: start-http-server php70v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -676,7 +674,7 @@ php70v-gearman:php70v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php70v-imagick:php70v
+php70v-imagick: start-http-server php70v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -684,7 +682,7 @@ php70v-imagick:php70v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php70v-mailparse:php70v
+php70v-mailparse: start-http-server php70v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -692,7 +690,7 @@ php70v-mailparse:php70v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php70v-redis:php70v
+php70v-redis: start-http-server php70v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -700,7 +698,7 @@ php70v-redis:php70v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php70v-sodium:php70v
+php70v-sodium: start-http-server php70v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -708,7 +706,7 @@ php70v-sodium:php70v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php70v-xdebug:php70v
+php70v-xdebug: start-http-server php70v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -716,7 +714,7 @@ php70v-xdebug:php70v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php71v:
+php71v: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -724,7 +722,7 @@ php71v:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php71v-gearman:php71v
+php71v-gearman: start-http-server php71v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -732,7 +730,7 @@ php71v-gearman:php71v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php71v-imagick:php71v
+php71v-imagick: start-http-server php71v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -740,7 +738,7 @@ php71v-imagick:php71v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php71v-mailparse:php71v
+php71v-mailparse: start-http-server php71v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -748,7 +746,7 @@ php71v-mailparse:php71v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php71v-redis:php71v
+php71v-redis: start-http-server php71v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -756,7 +754,7 @@ php71v-redis:php71v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php71v-sodium:php71v
+php71v-sodium: start-http-server php71v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -764,7 +762,7 @@ php71v-sodium:php71v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php71v-xdebug:php71v
+php71v-xdebug: start-http-server php71v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -772,7 +770,7 @@ php71v-xdebug:php71v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php72v:
+php72v: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -780,7 +778,7 @@ php72v:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php72v-gearman:php72v
+php72v-gearman: start-http-server php72v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -788,7 +786,7 @@ php72v-gearman:php72v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php72v-imagick:php72v
+php72v-imagick: start-http-server php72v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -796,7 +794,7 @@ php72v-imagick:php72v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php72v-mailparse:php72v
+php72v-mailparse: start-http-server php72v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -804,7 +802,7 @@ php72v-mailparse:php72v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php72v-redis:php72v
+php72v-redis: start-http-server php72v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -812,7 +810,7 @@ php72v-redis:php72v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php72v-xdebug:php72v
+php72v-xdebug: start-http-server php72v
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -820,7 +818,7 @@ php72v-xdebug:php72v
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php-build:
+php-build: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -828,7 +826,7 @@ php-build:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-PHP_CodeSniffer:composer
+PHP_CodeSniffer: start-http-server composer
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -836,7 +834,7 @@ PHP_CodeSniffer:composer
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-PHPCompatibility:composer
+PHPCompatibility: start-http-server composer
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -844,7 +842,7 @@ PHPCompatibility:composer
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-php-docs:
+php-docs: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -852,7 +850,7 @@ php-docs:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-phpldapadmin:
+phpldapadmin: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -860,7 +858,7 @@ phpldapadmin:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-phpMyAdmin40:
+phpMyAdmin40: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -868,7 +866,7 @@ phpMyAdmin40:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-phpmyadmin-curl-export:
+phpmyadmin-curl-export: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -876,7 +874,7 @@ phpmyadmin-curl-export:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-plantuml:
+plantuml: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -884,7 +882,7 @@ plantuml:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-postman:
+postman: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -892,7 +890,7 @@ postman:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-python-dpath:
+python-dpath: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -900,7 +898,7 @@ python-dpath:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-python-mitmproxy:
+python-mitmproxy: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -908,7 +906,7 @@ python-mitmproxy:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-python-mitmproxy-bundled:
+python-mitmproxy-bundled: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -916,7 +914,7 @@ python-mitmproxy-bundled:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-python-parsimonious:
+python-parsimonious: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -924,7 +922,7 @@ python-parsimonious:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-python-pipsi:
+python-pipsi: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -932,7 +930,7 @@ python-pipsi:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-python-prompt_toolkit:
+python-prompt_toolkit: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -940,7 +938,7 @@ python-prompt_toolkit:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-python-sphinxcontrib-documentedlist:
+python-sphinxcontrib-documentedlist: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -948,7 +946,7 @@ python-sphinxcontrib-documentedlist:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-rr:
+rr: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -956,7 +954,7 @@ rr:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-ruby-build:
+ruby-build: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -964,7 +962,7 @@ ruby-build:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-selenium:
+selenium: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -972,7 +970,7 @@ selenium:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-selenium-chromedriver:
+selenium-chromedriver: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -980,7 +978,7 @@ selenium-chromedriver:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-skipfish:
+skipfish: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -988,7 +986,7 @@ skipfish:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-smtp-cli:
+smtp-cli: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -996,7 +994,7 @@ smtp-cli:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-snowbox:
+snowbox: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -1004,7 +1002,7 @@ snowbox:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-SoapUI:
+SoapUI: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -1012,7 +1010,7 @@ SoapUI:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-sslscan:
+sslscan: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -1020,7 +1018,7 @@ sslscan:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-susepaste-qt:
+susepaste-qt: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -1028,7 +1026,7 @@ susepaste-qt:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-swaks:
+swaks: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -1036,7 +1034,7 @@ swaks:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-tcpproxy:
+tcpproxy: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -1044,7 +1042,7 @@ tcpproxy:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-telegram-desktop:
+telegram-desktop: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -1052,7 +1050,7 @@ telegram-desktop:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-termshare:
+termshare: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -1060,7 +1058,7 @@ termshare:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-toxiproxy:
+toxiproxy: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -1068,7 +1066,7 @@ toxiproxy:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-traefik:
+traefik: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -1076,7 +1074,7 @@ traefik:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-translate-shell:
+translate-shell: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -1084,7 +1082,7 @@ translate-shell:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-undocker:
+undocker: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -1092,7 +1090,7 @@ undocker:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-xdebug-tmpfiles:
+xdebug-tmpfiles: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -1100,7 +1098,7 @@ xdebug-tmpfiles:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-xrectsel:
+xrectsel: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -1108,7 +1106,7 @@ xrectsel:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-yadm:
+yadm: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -1116,7 +1114,7 @@ yadm:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-yum-scripts:
+yum-scripts: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -1124,7 +1122,7 @@ yum-scripts:
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-all: adobe-source-code-pro-fonts asdf balance bash-snippets bcal bfs box2 bup \
+all: start-http-server adobe-source-code-pro-fonts asdf balance bash-snippets bcal bfs box2 bup \
 	cgit-filter-syntaxhiglight cheat cloudflare-tools completion-ruby composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd extract-x509-cert fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
@@ -1152,13 +1150,13 @@ all: adobe-source-code-pro-fonts asdf balance bash-snippets bcal bfs box2 bup \
 	translate-shell undocker xdebug-tmpfiles xrectsel yadm yum-scripts
 	echo "Start build ALL packages"
 
-php53v-all: php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 php53v-xdebug
+php53v-all: start-http-server php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 php53v-xdebug
 	echo "Start build ALL packages"
 
-php72v-all: php72v php72v-gearman php72v-imagick php72v-mailparse php72v-redis php72v-xdebug
+php72v-all: start-http-server php72v php72v-gearman php72v-imagick php72v-mailparse php72v-redis php72v-xdebug
 	echo "Start build ALL php72v packages"
 
-.PHONY: all clean  adobe-source-code-pro-fonts asdf balance bash-snippets bcal bfs \
+.PHONY: all clean start-http-server adobe-source-code-pro-fonts asdf balance bash-snippets bcal bfs \
 	box2 bup cgit-filter-syntaxhiglight cheat cloudflare-tools completion-ruby composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd extract-x509-cert fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
