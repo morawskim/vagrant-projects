@@ -1034,6 +1034,14 @@ sslscan: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
+sslsplit: start-http-server
+	@echo Start build $@
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@VAGRANT_CWD="$(PWD)/$@" vagrant up
+	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee $(PWD)/$@/rpmbuild.log
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+
 susepaste-qt: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -1161,7 +1169,7 @@ all: start-http-server adobe-source-code-pro-fonts asdf balance bash-snippets bc
 	phpmyadmin-curl-export plantuml postman python-dpath python-mitmproxy \
 	python-mitmproxy-bundled python-parsimonious python-pipsi python-prompt_toolkit \
 	python-sphinxcontrib-documentedlist rr ruby-build selenium \
-	selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan \
+	selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan sslsplit \
 	susepaste-qt swaks tcpproxy telegram-desktop termshare toxiproxy traefik \
 	translate-shell undocker xdebug-tmpfiles xrectsel yadm yum-scripts
 	echo "Start build ALL packages"
@@ -1195,7 +1203,7 @@ php72v-all: start-http-server php72v php72v-gearman php72v-imagick php72v-mailpa
 	phpmyadmin-curl-export plantuml postman python-dpath python-mitmproxy \
 	python-mitmproxy-bundled python-parsimonious python-pipsi python-prompt_toolkit \
 	python-sphinxcontrib-documentedlist rr ruby-build selenium \
-	selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan \
+	selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan sslsplit \
 	susepaste-qt swaks tcpproxy telegram-desktop termshare toxiproxy traefik \
 	translate-shell undocker xdebug-tmpfiles xrectsel yadm yum-scripts \
 	php53v-all php72v-all
