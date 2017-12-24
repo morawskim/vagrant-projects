@@ -43,7 +43,7 @@ Vagrant.configure(2) do |config|
   # The hostname the machine should have.
   # Defaults to nil. If nil, Vagrant will not manage the hostname.
   # If set to a string, the hostname will be set on boot.
-  config.vm.hostname = "rpmbuild-php.vagrant.dev"
+  config.vm.hostname = "rpmbuild-vagrant.test"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
