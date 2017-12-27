@@ -75,6 +75,14 @@ bup: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
+caddy: start-http-server
+	@echo Start build $@
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@VAGRANT_CWD="$(PWD)/$@" vagrant up
+	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee $(PWD)/$@/rpmbuild.log
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+
 cgit-filter-syntaxhiglight: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -1162,7 +1170,7 @@ yum-scripts: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-all: start-http-server adobe-source-code-pro-fonts ApacheDirectoryStudio asdf balance bash-snippets bcal bfs box2 bup \
+all: start-http-server adobe-source-code-pro-fonts ApacheDirectoryStudio asdf balance bash-snippets bcal bfs box2 bup caddy \
 	cgit-filter-syntaxhiglight cheat cloudflare-tools completion-ruby composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd exa extract-x509-cert fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
@@ -1197,7 +1205,7 @@ php72v-all: start-http-server php72v php72v-gearman php72v-imagick php72v-mailpa
 	echo "Start build ALL php72v packages"
 
 .PHONY: all clean start-http-server adobe-source-code-pro-fonts ApacheDirectoryStudio asdf balance bash-snippets bcal bfs \
-	box2 bup cgit-filter-syntaxhiglight cheat cloudflare-tools completion-ruby composer ctop \
+	box2 bup caddy cgit-filter-syntaxhiglight cheat cloudflare-tools completion-ruby composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd exa extract-x509-cert fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
 	fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf git-crypt git-extras \
