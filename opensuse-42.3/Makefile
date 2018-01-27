@@ -362,6 +362,14 @@ libpuzzle: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
+librarian-puppet: start-http-server
+	@echo Start build $@
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@VAGRANT_CWD="$(PWD)/$@" vagrant up
+	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee $(PWD)/$@/rpmbuild.log
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+
 mailhog: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -1192,7 +1200,7 @@ all: start-http-server adobe-source-code-pro-fonts ApacheDirectoryStudio asdf ba
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
 	fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf git-crypt git-extras git-hooks \
 	greenmail hstr http-prompt httplive hub icdiff \
-	jetbrains-toolbox jmeter journalcheck json-tools krunner-kopetecontacts libpuzzle \
+	jetbrains-toolbox jmeter journalcheck json-tools krunner-kopetecontacts libpuzzle librarian-puppet \
 	mailhog mkosi monoid mycli nerd-fonts netsed ngrok-client nullmailer O-Saft \
 	owasp-zap packer par2 password-store-import perl-MIME-Types phing phinx \
 	php php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 \
@@ -1226,7 +1234,7 @@ php72v-all: start-http-server php72v php72v-gearman php72v-imagick php72v-mailpa
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
 	fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf git-crypt git-extras git-hooks \
 	greenmail hstr http-prompt httplive hub icdiff jetbrains-toolbox \
-	jmeter journalcheck json-tools krunner-kopetecontacts krunner-skypeforlinux libpuzzle \
+	jmeter journalcheck json-tools krunner-kopetecontacts krunner-skypeforlinux libpuzzle librarian-puppet \
 	mailhog mkosi monoid mycli nerd-fonts netsed ngrok-client nullmailer O-Saft \
 	owasp-zap packer par2 password-store-import perl-MIME-Types phing phinx \
 	php php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 \
