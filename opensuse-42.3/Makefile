@@ -235,6 +235,14 @@ fzf: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
+gifski: start-http-server
+	@echo Start build $@
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@VAGRANT_CWD="$(PWD)/$@" vagrant up
+	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee $(PWD)/$@/rpmbuild.log
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+
 git-crypt: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -1198,7 +1206,7 @@ all: start-http-server adobe-source-code-pro-fonts ApacheDirectoryStudio asdf ba
 	cgit-filter-syntaxhiglight cheat cloudflare-tools completion-ruby composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd exa extract-x509-cert fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
-	fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf git-crypt git-extras git-hooks \
+	fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf gifski git-crypt git-extras git-hooks \
 	greenmail hstr http-prompt httplive hub icdiff \
 	jetbrains-toolbox jmeter journalcheck json-tools krunner-kopetecontacts libpuzzle librarian-puppet \
 	mailhog mkosi monoid mycli nerd-fonts netsed ngrok-client nullmailer O-Saft \
@@ -1232,7 +1240,7 @@ php72v-all: start-http-server php72v php72v-gearman php72v-imagick php72v-mailpa
 	box2 bup caddy cgit-filter-syntaxhiglight cheat cloudflare-tools completion-ruby composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd exa extract-x509-cert fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
-	fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf git-crypt git-extras git-hooks \
+	fakeprovide-openssl-devel faker-cli fontawesome-fonts fzf gifski git-crypt git-extras git-hooks \
 	greenmail hstr http-prompt httplive hub icdiff jetbrains-toolbox \
 	jmeter journalcheck json-tools krunner-kopetecontacts krunner-skypeforlinux libpuzzle librarian-puppet \
 	mailhog mkosi monoid mycli nerd-fonts netsed ngrok-client nullmailer O-Saft \
