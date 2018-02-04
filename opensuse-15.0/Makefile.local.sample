@@ -1,0 +1,5 @@
+HTTP_SERVER_DOCUMENT_ROOT ?= /home/marcin/Dokumenty/repo/openSUSE-15.0/
+
+start-http-server:
+	systemctl --user start suse-repo@15.0.path
+	systemctl --user start http-repo-server@openSUSE-15.0.service
