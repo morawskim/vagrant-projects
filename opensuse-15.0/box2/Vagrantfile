@@ -86,7 +86,7 @@ Vagrant.configure(2) do |config|
   EOS
   config.vm.provision "puppet" do |puppet|
     puppet.manifests_path = File.expand_path(__FILE__) + '/../../../puppet/manifests/rpm'
-    puppet.manifest_file = "composer-package.pp"
+    puppet.manifest_file = "box2.pp"
     puppet.module_path = File.expand_path(__FILE__) + '/../../../puppet/modules'
     puppet.hiera_config_path = File.expand_path(__FILE__) + '/../../../puppet/hiera-vagrant.yaml'
     puppet.working_directory = "/tmp/vagrant-puppet"
