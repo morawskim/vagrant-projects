@@ -85,7 +85,7 @@ Vagrant.configure(2) do |config|
     zypper --non-interactive --gpg-auto-import-keys in --auto-agree-with-licenses puppet
   EOS
   config.vm.provision "puppet" do |puppet|
-    puppet.manifests_path = File.expand_path(__FILE__) + '/../../../puppet/manifests/rpm'
+    puppet.manifests_path = File.expand_path(File.dirname(__FILE__) + '/../../puppet/manifests/rpm/openSUSE:Leap:15')
     puppet.manifest_file = "php55v-gearman.pp"
     puppet.module_path = File.expand_path(__FILE__) + '/../../../puppet/modules'
     puppet.hiera_config_path = File.expand_path(__FILE__) + '/../../../puppet/hiera-vagrant.yaml'
