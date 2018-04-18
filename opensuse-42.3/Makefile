@@ -978,6 +978,14 @@ postman: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
+proxysql: start-http-server
+	@echo Start build $@
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@VAGRANT_CWD="$(PWD)/$@" vagrant up
+	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee $(PWD)/$@/rpmbuild.log
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+
 python-dpath: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -1246,7 +1254,7 @@ all: start-http-server adobe-source-code-pro-fonts ApacheDirectoryStudio asdf ba
 	php72v-gearman php72v-imagick php72v-mailparse php72v-redis \
 	php72v-xdebug php-build PHP_CodeSniffer PHPCompatibility \
 	php-docs phpldapadmin phpMyAdmin40 \
-	phpmyadmin-curl-export plantuml postman python-dpath python-mitmproxy \
+	phpmyadmin-curl-export plantuml postman proxysql python-dpath python-mitmproxy \
 	python-mitmproxy-bundled python-parsimonious python-pipsi python-prompt_toolkit \
 	python-sphinxcontrib-documentedlist rr ruby-build scrcpy selenium \
 	selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan sslsplit \
@@ -1280,7 +1288,7 @@ php72v-all: start-http-server php72v php72v-gearman php72v-imagick php72v-mailpa
 	php72v-gearman php72v-imagick php72v-mailparse php72v-redis \
 	php72v-xdebug php-build PHP_CodeSniffer PHPCompatibility \
 	php-docs phpldapadmin phpMyAdmin40 \
-	phpmyadmin-curl-export plantuml postman python-dpath python-mitmproxy \
+	phpmyadmin-curl-export plantuml postman proxysql python-dpath python-mitmproxy \
 	python-mitmproxy-bundled python-parsimonious python-pipsi python-prompt_toolkit \
 	python-sphinxcontrib-documentedlist rr ruby-build scrcpy selenium \
 	selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan sslsplit \
