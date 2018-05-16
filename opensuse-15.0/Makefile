@@ -1108,6 +1108,12 @@ php53v-all: start-http-server php53v php53v-gearman php53v-imagick php53v-mailpa
 php72v-all: start-http-server php72v php72v-gearman php72v-imagick php72v-mailparse php72v-redis php72v-xdebug
 	echo "Start build ALL php72v packages"
 
+php71v-all: start-http-server php71v php71v-gearman php71v-imagick php71v-mailparse php71v-redis php71v-xdebug
+	echo "Start build ALL php71v packages"
+
+php70v-all: start-http-server php70v php70v-gearman php70v-imagick php70v-mailparse php70v-redis php70v-xdebug
+	echo "Start build ALL php70v packages"
+
 .PHONY: all clean start-http-server adobe-source-code-pro-fonts ApacheDirectoryStudio asdf balance bash-snippets bcal bfs \
 	bup caddy cgit-filter-syntaxhiglight cloudflare-tools completion-ruby composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd exa extract-x509-cert fakeprovide \
@@ -1134,4 +1140,4 @@ php72v-all: start-http-server php72v php72v-gearman php72v-imagick php72v-mailpa
 	selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan sslsplit \
 	susepaste-qt swaks tcpproxy telegram-desktop termshare toxiproxy traefik \
 	translate-shell undocker xdebug-tmpfiles xrectsel yadm yum-scripts \
-	php53v-all php72v-all
+	php53v-all php72v-all php71v-all php70v-all
