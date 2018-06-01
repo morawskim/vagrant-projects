@@ -51,6 +51,14 @@ bfs: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
+BotFramework-Emulator: start-http-server
+	@echo Start build $@
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@VAGRANT_CWD="$(PWD)/$@" vagrant up
+	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-botframework.sh 2>&1 | tee $(PWD)/$@/rpmbuild.log
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@cp -vr $(PWD)/$@/rpm/RPMS/*x86_64.rpm $(HTTP_SERVER_DOCUMENT_ROOT)/x86_64
+
 bup: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -243,6 +251,14 @@ greenmail: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
+hostess: start-http-server
+	@echo Start build $@
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@VAGRANT_CWD="$(PWD)/$@" vagrant up
+	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee $(PWD)/$@/rpmbuild.log
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+
 httplive: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -314,6 +330,14 @@ librarian-puppet: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
+license: start-http-server
+	@echo Start build $@
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@VAGRANT_CWD="$(PWD)/$@" vagrant up
+	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee $(PWD)/$@/rpmbuild.log
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+
 mailhog: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -322,7 +346,23 @@ mailhog: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
+minica: start-http-server
+	@echo Start build $@
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@VAGRANT_CWD="$(PWD)/$@" vagrant up
+	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee $(PWD)/$@/rpmbuild.log
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+
 mkosi: start-http-server
+	@echo Start build $@
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@VAGRANT_CWD="$(PWD)/$@" vagrant up
+	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee $(PWD)/$@/rpmbuild.log
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+
+MozillaFirefoxDeveloperEdition: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -850,6 +890,14 @@ postman: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
+proxysql: start-http-server
+	@echo Start build $@
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@VAGRANT_CWD="$(PWD)/$@" vagrant up
+	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee $(PWD)/$@/rpmbuild.log
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+
 python-dpath: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -899,6 +947,14 @@ rr: start-http-server
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
 ruby-build: start-http-server
+	@echo Start build $@
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@VAGRANT_CWD="$(PWD)/$@" vagrant up
+	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee $(PWD)/$@/rpmbuild.log
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+
+scrcpy: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@VAGRANT_CWD="$(PWD)/$@" vagrant up
@@ -1010,6 +1066,14 @@ termshare: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
+textql: start-http-server
+	@echo Start build $@
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@VAGRANT_CWD="$(PWD)/$@" vagrant up
+	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee $(PWD)/$@/rpmbuild.log
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+
 toxiproxy: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -1074,14 +1138,14 @@ yum-scripts: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-all: start-http-server adobe-source-code-pro-fonts ApacheDirectoryStudio asdf balance bash-snippets bcal bfs bup caddy \
+all: start-http-server adobe-source-code-pro-fonts ApacheDirectoryStudio asdf balance bash-snippets bcal bfs BotFramework-Emulator bup caddy \
 	cgit-filter-syntaxhiglight cloudflare-tools completion-ruby composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd exa extract-x509-cert fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
 	fakeprovide-openssl-devel fontawesome-fonts fzf gifski git-crypt git-extras git-hooks \
-	greenmail httplive hub \
+	greenmail hostess httplive hub \
 	jetbrains-toolbox jmeter journalcheck json-tools krunner-skypeforlinux libpuzzle librarian-puppet \
-	mailhog mkosi nerd-fonts netsed ngrok-client nullmailer O-Saft \
+	license mailhog minica mkosi MozillaFirefoxDeveloperEdition nerd-fonts netsed ngrok-client nullmailer O-Saft \
 	owasp-zap packer par2 password-store-import perl-MIME-Types \
 	php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 \
 	php53v-xdebug php54v php54v-gearman php54v-imagick php54v-mailparse \
@@ -1094,11 +1158,11 @@ all: start-http-server adobe-source-code-pro-fonts ApacheDirectoryStudio asdf ba
 	php72v-gearman php72v-imagick php72v-mailparse php72v-redis \
 	php72v-xdebug php-build \
 	php-docs phpldapadmin phpMyAdmin40 \
-	phpmyadmin-curl-export plantuml postman python-dpath \
+	phpmyadmin-curl-export plantuml postman proxysql python-dpath \
 	python-parsimonious python-pipsi python-prompt_toolkit \
-	python-sphinxcontrib-documentedlist rr ruby-build selenium \
+	python-sphinxcontrib-documentedlist rr ruby-build scrcpy selenium \
 	selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan sslsplit \
-	susepaste-qt swaks tcpproxy telegram-desktop termshare toxiproxy traefik \
+	susepaste-qt swaks tcpproxy telegram-desktop termshare textql toxiproxy traefik \
 	translate-shell undocker xdebug-tmpfiles xrectsel yadm yum-scripts
 	echo "Start build ALL packages"
 
@@ -1115,13 +1179,13 @@ php70v-all: start-http-server php70v php70v-gearman php70v-imagick php70v-mailpa
 	echo "Start build ALL php70v packages"
 
 .PHONY: all clean start-http-server adobe-source-code-pro-fonts ApacheDirectoryStudio asdf balance bash-snippets bcal bfs \
-	bup caddy cgit-filter-syntaxhiglight cloudflare-tools completion-ruby composer ctop \
+	BotFramework-Emulator bup caddy cgit-filter-syntaxhiglight cloudflare-tools completion-ruby composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd exa extract-x509-cert fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
 	fakeprovide-openssl-devel fontawesome-fonts fzf gifski git-crypt git-extras git-hooks \
-	greenmail httplive hub jetbrains-toolbox \
+	greenmail hostess httplive hub jetbrains-toolbox \
 	jmeter journalcheck json-tools krunner-skypeforlinux libpuzzle librarian-puppet \
-	mailhog mkosi nerd-fonts netsed ngrok-client nullmailer O-Saft \
+	license mailhog minica mkosi MozillaFirefoxDeveloperEdition nerd-fonts netsed ngrok-client nullmailer O-Saft \
 	owasp-zap packer par2 password-store-import perl-MIME-Types \
 	php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 \
 	php53v-xdebug php54v php54v-gearman php54v-imagick php54v-mailparse \
@@ -1134,10 +1198,10 @@ php70v-all: start-http-server php70v php70v-gearman php70v-imagick php70v-mailpa
 	php72v-gearman php72v-imagick php72v-mailparse php72v-redis \
 	php72v-xdebug php-build \
 	php-docs phpldapadmin phpMyAdmin40 \
-	phpmyadmin-curl-export plantuml postman python-dpath \
+	phpmyadmin-curl-export plantuml postman proxysql python-dpath \
 	python-parsimonious python-pipsi python-prompt_toolkit \
-	python-sphinxcontrib-documentedlist rr ruby-build selenium \
+	python-sphinxcontrib-documentedlist rr ruby-build scrcpy selenium \
 	selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan sslsplit \
-	susepaste-qt swaks tcpproxy telegram-desktop termshare toxiproxy traefik \
+	susepaste-qt swaks tcpproxy telegram-desktop termshare textql toxiproxy traefik \
 	translate-shell undocker xdebug-tmpfiles xrectsel yadm yum-scripts \
 	php53v-all php72v-all php71v-all php70v-all
