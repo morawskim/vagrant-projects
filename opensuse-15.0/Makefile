@@ -1082,14 +1082,6 @@ undocker: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-xdebug-tmpfiles: start-http-server
-	@echo Start build $@
-	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
-	@VAGRANT_CWD="$(PWD)/$@" vagrant up
-	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee $(PWD)/$@/rpmbuild.log
-	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
-	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
-
 xrectsel: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -1139,7 +1131,7 @@ all: start-http-server ApacheDirectoryStudio asdf balance bash-snippets bcal bfs
 	rr ruby-build scrcpy selenium \
 	selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan sslsplit \
 	susepaste-qt swaks tcpproxy telegram-desktop termshare textql toxiproxy traefik \
-	translate-shell undocker xdebug-tmpfiles xrectsel yadm yum-scripts
+	translate-shell undocker xrectsel yadm yum-scripts
 	echo "Start build ALL packages"
 
 php53v-all: start-http-server php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 php53v-xdebug
@@ -1180,5 +1172,5 @@ php70v-all: start-http-server php70v php70v-gearman php70v-imagick php70v-mailpa
 	rr ruby-build scrcpy selenium \
 	selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan sslsplit \
 	susepaste-qt swaks tcpproxy telegram-desktop termshare textql toxiproxy traefik \
-	translate-shell undocker xdebug-tmpfiles xrectsel yadm yum-scripts \
+	translate-shell undocker xrectsel yadm yum-scripts \
 	php53v-all php72v-all php71v-all php70v-all
