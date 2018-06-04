@@ -1138,7 +1138,7 @@ yum-scripts: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-all: start-http-server adobe-source-code-pro-fonts ApacheDirectoryStudio asdf balance bash-snippets bcal bfs BotFramework-Emulator bup caddy \
+all: start-http-server ApacheDirectoryStudio asdf balance bash-snippets bcal bfs BotFramework-Emulator bup caddy \
 	cgit-filter-syntaxhiglight cloudflare-tools completion-ruby composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd exa extract-x509-cert fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
@@ -1178,7 +1178,8 @@ php71v-all: start-http-server php71v php71v-gearman php71v-imagick php71v-mailpa
 php70v-all: start-http-server php70v php70v-gearman php70v-imagick php70v-mailparse php70v-redis php70v-xdebug
 	echo "Start build ALL php70v packages"
 
-.PHONY: all clean start-http-server adobe-source-code-pro-fonts ApacheDirectoryStudio asdf balance bash-snippets bcal bfs \
+.PHONY: all clean start-http-server \
+	ApacheDirectoryStudio asdf balance bash-snippets bcal bfs \
 	BotFramework-Emulator bup caddy cgit-filter-syntaxhiglight cloudflare-tools completion-ruby composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd exa extract-x509-cert fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
