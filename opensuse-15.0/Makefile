@@ -91,14 +91,6 @@ cloudflare-tools: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-completion-ruby: start-http-server
-	@echo Start build $@
-	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
-	@VAGRANT_CWD="$(PWD)/$@" vagrant up
-	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee $(PWD)/$@/rpmbuild.log
-	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
-	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
-
 composer: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -1083,7 +1075,7 @@ yum-scripts: start-http-server
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
 all: start-http-server ApacheDirectoryStudio asdf balance bash-snippets bcal bfs BotFramework-Emulator bup caddy \
-	cgit-filter-syntaxhiglight cloudflare-tools completion-ruby composer ctop \
+	cgit-filter-syntaxhiglight cloudflare-tools composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd exa fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
 	fakeprovide-openssl-devel fontawesome-fonts fzf gifski git-crypt git-extras git-hooks \
@@ -1124,7 +1116,7 @@ php70v-all: start-http-server php70v php70v-gearman php70v-imagick php70v-mailpa
 
 .PHONY: all clean start-http-server \
 	ApacheDirectoryStudio asdf balance bash-snippets bcal bfs \
-	BotFramework-Emulator bup caddy cgit-filter-syntaxhiglight cloudflare-tools completion-ruby composer ctop \
+	BotFramework-Emulator bup caddy cgit-filter-syntaxhiglight cloudflare-tools composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd exa fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
 	fakeprovide-openssl-devel fontawesome-fonts fzf gifski git-crypt git-extras git-hooks \
