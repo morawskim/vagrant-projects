@@ -314,14 +314,6 @@ libpuzzle: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-librarian-puppet: start-http-server
-	@echo Start build $@
-	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
-	@VAGRANT_CWD="$(PWD)/$@" vagrant up
-	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee $(PWD)/$@/rpmbuild.log
-	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
-	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
-
 license: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -1104,7 +1096,7 @@ all: start-http-server ApacheDirectoryStudio asdf balance bash-snippets bcal bfs
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
 	fakeprovide-openssl-devel fontawesome-fonts fzf gifski git-crypt git-extras git-hooks \
 	greenmail hostess httplive hub \
-	jetbrains-toolbox jmeter journalcheck json-tools krunner-skypeforlinux libpuzzle librarian-puppet \
+	jetbrains-toolbox jmeter journalcheck json-tools krunner-skypeforlinux libpuzzle \
 	license mailhog minica mkosi MozillaFirefoxDeveloperEdition nerd-fonts netsed ngrok-client nullmailer O-Saft \
 	owasp-zap packer par2 password-store-import perl-MIME-Types \
 	php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 \
@@ -1145,7 +1137,7 @@ php70v-all: start-http-server php70v php70v-gearman php70v-imagick php70v-mailpa
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
 	fakeprovide-openssl-devel fontawesome-fonts fzf gifski git-crypt git-extras git-hooks \
 	greenmail hostess httplive hub jetbrains-toolbox \
-	jmeter journalcheck json-tools krunner-skypeforlinux libpuzzle librarian-puppet \
+	jmeter journalcheck json-tools krunner-skypeforlinux libpuzzle \
 	license mailhog minica mkosi MozillaFirefoxDeveloperEdition nerd-fonts netsed ngrok-client nullmailer O-Saft \
 	owasp-zap packer par2 password-store-import perl-MIME-Types \
 	php53v php53v-gearman php53v-imagick php53v-mailparse php53v-ssh2 \
