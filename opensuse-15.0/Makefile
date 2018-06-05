@@ -155,14 +155,6 @@ exa: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-extract-x509-cert: start-http-server
-	@echo Start build $@
-	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
-	@VAGRANT_CWD="$(PWD)/$@" vagrant up
-	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee $(PWD)/$@/rpmbuild.log
-	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
-	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
-
 fakeprovide: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -1108,7 +1100,7 @@ yum-scripts: start-http-server
 
 all: start-http-server ApacheDirectoryStudio asdf balance bash-snippets bcal bfs BotFramework-Emulator bup caddy \
 	cgit-filter-syntaxhiglight cloudflare-tools completion-ruby composer ctop \
-	dockerize easy-rsa easy-rsa2 enhancd exa extract-x509-cert fakeprovide \
+	dockerize easy-rsa easy-rsa2 enhancd exa fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
 	fakeprovide-openssl-devel fontawesome-fonts fzf gifski git-crypt git-extras git-hooks \
 	greenmail hostess httplive hub \
@@ -1149,7 +1141,7 @@ php70v-all: start-http-server php70v php70v-gearman php70v-imagick php70v-mailpa
 .PHONY: all clean start-http-server \
 	ApacheDirectoryStudio asdf balance bash-snippets bcal bfs \
 	BotFramework-Emulator bup caddy cgit-filter-syntaxhiglight cloudflare-tools completion-ruby composer ctop \
-	dockerize easy-rsa easy-rsa2 enhancd exa extract-x509-cert fakeprovide \
+	dockerize easy-rsa easy-rsa2 enhancd exa fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
 	fakeprovide-openssl-devel fontawesome-fonts fzf gifski git-crypt git-extras git-hooks \
 	greenmail hostess httplive hub jetbrains-toolbox \
