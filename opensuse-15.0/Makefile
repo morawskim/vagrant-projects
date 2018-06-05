@@ -850,14 +850,6 @@ phpMyAdmin40: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-phpmyadmin-curl-export: start-http-server
-	@echo Start build $@
-	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
-	@VAGRANT_CWD="$(PWD)/$@" vagrant up
-	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee $(PWD)/$@/rpmbuild.log
-	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
-	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
-
 plantuml: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -1110,7 +1102,7 @@ all: start-http-server ApacheDirectoryStudio asdf balance bash-snippets bcal bfs
 	php72v-gearman php72v-imagick php72v-mailparse php72v-redis \
 	php72v-xdebug php-build \
 	php-docs phpldapadmin phpMyAdmin40 \
-	phpmyadmin-curl-export plantuml postman proxysql python-dpath \
+	plantuml postman proxysql python-dpath \
 	python-pipsi \
 	rr ruby-build scrcpy selenium \
 	selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan sslsplit \
@@ -1151,7 +1143,7 @@ php70v-all: start-http-server php70v php70v-gearman php70v-imagick php70v-mailpa
 	php72v-gearman php72v-imagick php72v-mailparse php72v-redis \
 	php72v-xdebug php-build \
 	php-docs phpldapadmin phpMyAdmin40 \
-	phpmyadmin-curl-export plantuml postman proxysql python-dpath \
+	plantuml postman proxysql python-dpath \
 	python-pipsi \
 	rr ruby-build scrcpy selenium \
 	selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan sslsplit \
