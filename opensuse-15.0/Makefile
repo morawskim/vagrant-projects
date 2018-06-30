@@ -3,6 +3,14 @@ include Makefile.local
 clean:
 	@git clean -fdx
 
+alacritty: start-http-server
+	@echo Start build $@
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@VAGRANT_CWD="$(PWD)/$@" vagrant up
+	@VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee $(PWD)/$@/rpmbuild.log
+	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
+	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
+
 ApacheDirectoryStudio: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -1082,7 +1090,7 @@ yum-scripts: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-all: start-http-server ApacheDirectoryStudio asdf balance bash-snippets bcal bfs BotFramework-Emulator bup caddy \
+all: start-http-server alacritty ApacheDirectoryStudio asdf balance bash-snippets bcal bfs BotFramework-Emulator bup caddy \
 	cgit-filter-syntaxhiglight cloudflare-tools composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd exa fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
@@ -1122,7 +1130,7 @@ php71v-all: start-http-server php71v php71v-gearman php71v-imagick php71v-mailpa
 php70v-all: start-http-server php70v php70v-gearman php70v-imagick php70v-mailparse php70v-redis php70v-xdebug
 	echo "Start build ALL php70v packages"
 
-.PHONY: all clean start-http-server \
+.PHONY: all clean start-http-server alacritty \
 	ApacheDirectoryStudio asdf balance bash-snippets bcal bfs \
 	BotFramework-Emulator bup caddy cgit-filter-syntaxhiglight cloudflare-tools composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd exa fakeprovide \
