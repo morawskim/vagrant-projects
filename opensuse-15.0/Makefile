@@ -938,14 +938,6 @@ selenium-chromedriver: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-skipfish: start-http-server
-	@echo Start build $@
-	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
-	@VAGRANT_CWD="$(PWD)/$@" vagrant up
-	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee $(PWD)/$@/rpmbuild.log
-	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
-	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
-
 smtp-cli: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -1105,7 +1097,7 @@ all: start-http-server alacritty ApacheDirectoryStudio asdf balance bash-snippet
 	plantuml postman proxysql python-dpath \
 	python-pipsi \
 	rr ruby-build scrcpy selenium \
-	selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan sslsplit \
+	selenium-chromedriver smtp-cli snowbox SoapUI sslscan sslsplit \
 	susepaste-qt swaks telegram-desktop termshare textql toxiproxy traefik \
 	translate-shell undocker xrectsel yadm yum-scripts
 	echo "Start build ALL packages"
@@ -1146,7 +1138,7 @@ php70v-all: start-http-server php70v php70v-gearman php70v-imagick php70v-mailpa
 	plantuml postman proxysql python-dpath \
 	python-pipsi \
 	rr ruby-build scrcpy selenium \
-	selenium-chromedriver skipfish smtp-cli snowbox SoapUI sslscan sslsplit \
+	selenium-chromedriver smtp-cli snowbox SoapUI sslscan sslsplit \
 	susepaste-qt swaks telegram-desktop termshare textql toxiproxy traefik \
 	translate-shell undocker xrectsel yadm yum-scripts \
 	php53v-all php72v-all php71v-all php70v-all
