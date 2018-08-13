@@ -179,14 +179,6 @@ fakeprovide-libXScrnSaver: start-http-server
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
 	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
 
-fakeprovide-openssl-devel: start-http-server
-	@echo Start build $@
-	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
-	@VAGRANT_CWD="$(PWD)/$@" vagrant up
-	VAGRANT_CWD="$(PWD)/$@" vagrant ssh -- -l rpm -i ~/.ssh/id_rsa -o BatchMode=yes /vagrant/build-spec.sh /home/rpm/rpmbuild $@.spec 2>&1 | tee $(PWD)/$@/rpmbuild.log
-	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
-	@cp -vr $(PWD)/$@/rpm/RPMS/* $(HTTP_SERVER_DOCUMENT_ROOT)
-
 findmyhash: start-http-server
 	@echo Start build $@
 	@VAGRANT_CWD="$(PWD)/$@" vagrant destroy --force
@@ -1078,7 +1070,7 @@ all: start-http-server alacritty ApacheDirectoryStudio asdf balance bash-snippet
 	cgit-filter-syntaxhiglight cloudflare-tools composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd exa fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
-	fakeprovide-openssl-devel findmyhash fontawesome-fonts fzf gifski git-crypt git-extras git-hooks \
+	findmyhash fontawesome-fonts fzf gifski git-crypt git-extras git-hooks \
 	greenmail hostess httplive hub \
 	jetbrains-toolbox jmeter journalcheck json-tools krunner-skypeforlinux libpuzzle \
 	license mailhog minica mkosi MozillaFirefoxDeveloperEdition nerd-fonts netsed ngrok-client nullmailer O-Saft \
@@ -1119,7 +1111,7 @@ php70v-all: start-http-server php70v php70v-gearman php70v-imagick php70v-mailpa
 	BotFramework-Emulator bup caddy cgit-filter-syntaxhiglight cloudflare-tools composer ctop \
 	dockerize easy-rsa easy-rsa2 enhancd exa fakeprovide \
 	fakeprovide-libappindicator fakeprovide-libXScrnSaver \
-	fakeprovide-openssl-devel findmyhash fontawesome-fonts fzf gifski git-crypt git-extras git-hooks \
+	findmyhash fontawesome-fonts fzf gifski git-crypt git-extras git-hooks \
 	greenmail hostess httplive hub jetbrains-toolbox \
 	jmeter journalcheck json-tools krunner-skypeforlinux libpuzzle \
 	license mailhog minica mkosi MozillaFirefoxDeveloperEdition nerd-fonts netsed ngrok-client nullmailer O-Saft \
