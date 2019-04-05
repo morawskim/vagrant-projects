@@ -1,0 +1,4 @@
+.vagrant/
+*.osm.pbf
+*.box
+*.log
